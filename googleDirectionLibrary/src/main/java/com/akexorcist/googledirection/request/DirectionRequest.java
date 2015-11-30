@@ -19,7 +19,7 @@ limitations under the License.
 package com.akexorcist.googledirection.request;
 
 import com.akexorcist.googledirection.model.Direction;
-import com.akexorcist.googledirection.DirectionAndPlaceConnection;
+import com.akexorcist.googledirection.network.DirectionAndPlaceConnection;
 import com.akexorcist.googledirection.DirectionCallback;
 import com.google.android.gms.maps.model.LatLng;
 

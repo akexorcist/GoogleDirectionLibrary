@@ -16,7 +16,7 @@ limitations under the License.
 
 */
 
-package com.akexorcist.googledirection;
+package com.akexorcist.googledirection.network;
 
 import com.akexorcist.googledirection.constant.DirectionUrl;
 import com.squareup.okhttp.OkHttpClient;
