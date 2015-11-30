@@ -1,0 +1,18 @@
+language: android
+jdk: oraclejdk7
+
+android:
+  components:
+    - tools
+    - build-tools-23.0.1
+    - android-23
+    - extra-android-m2repository
+    - extra-android-support
+
+notifications:
+  email: false
+
+before_install:
+ - chmod +x gradlew
+
+script: ./gradlew clean
