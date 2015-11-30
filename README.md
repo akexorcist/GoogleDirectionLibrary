@@ -2,3 +2,21 @@
 
 # Android-GoogleDirectionLibrary
 Library for Google Direction API for Google Maps Android API v2
+
+
+Download
+===============================
+
+Maven
+```
+<dependency>
+  <groupId>com.akexorcist</groupId>
+  <artifactId>googledirectionlibrary</artifactId>
+  <version>1.0.1</version>
+</dependency>
+```
+
+Gradle
+```
+compile 'com.akexorcist:googledirectionlibrary:1.0.1'
+```
