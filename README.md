@@ -1,7 +1,15 @@
 [![Build Status](https://travis-ci.org/akexorcist/Android-GoogleDirectionLibrary.svg?branch=master)](https://travis-ci.org/akexorcist/Android-GoogleDirectionLibrary) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.akexorcist/googledirectionlibrary/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.akexorcist/googledirectionlibrary)
 
+
 # Android-GoogleDirectionLibrary
-Library for Google Direction API for Google Maps Android API v2
+![Google Direction Library](https://raw.githubusercontent.com/akexorcist/Android-GoogleDirectionLibrary/master/image/google-direction-library-sample_header.jpg)
+Android library for Google Maps Direction API for using with Google Maps for Android
+
+
+Demo
+===============================
+
+Try it at [Google Play](https://play.google.com/store/apps/details?id=com.akexorcist.googledirection.sample)
 
 
 Download
@@ -12,11 +20,29 @@ Maven
 <dependency>
   <groupId>com.akexorcist</groupId>
   <artifactId>googledirectionlibrary</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.3</version>
 </dependency>
 ```
 
 Gradle
 ```
-compile 'com.akexorcist:googledirectionlibrary:1.0.1'
+compile 'com.akexorcist:googledirectionlibrary:1.0.3'
 ```
+
+Usage Documentation
+===============================
+English Version : http://www.akexorcist.com/2015/12/google-direction-library-for-android-en.html
+
+Thai Version : http://www.akexorcist.com/2015/12/google-direction-library-for-android-th.html
+
+
+Licence
+===========================
+Copyright 2015 Akexorcist
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this work except in compliance with the License. You may obtain a copy of the License in the LICENSE file, or at:
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
