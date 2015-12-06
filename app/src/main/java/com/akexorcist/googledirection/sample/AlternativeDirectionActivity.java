@@ -25,7 +25,7 @@ import java.util.ArrayList;
 public class AlternativeDirectionActivity extends AppCompatActivity implements OnMapReadyCallback, View.OnClickListener, DirectionCallback {
     private Button btnRequestDirection;
     private GoogleMap googleMap;
-    private String serverKey = "AIzaSyDFWdlR5DG1VYXSaMwG62ilYqaQrYn2i6o";
+    private String serverKey = "YOUR_SERVER_KEY";
     private LatLng camera = new LatLng(35.1773909, 136.9471357);
     private LatLng origin = new LatLng(35.1766982, 136.9413508);
     private LatLng destination = new LatLng(35.1800441, 136.9532567);

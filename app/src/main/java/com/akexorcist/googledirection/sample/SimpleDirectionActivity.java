@@ -27,7 +27,7 @@ import java.util.List;
 public class SimpleDirectionActivity extends AppCompatActivity implements OnMapReadyCallback, View.OnClickListener, DirectionCallback {
     private Button btnRequestDirection;
     private GoogleMap googleMap;
-    private String serverKey = "AIzaSyDFWdlR5DG1VYXSaMwG62ilYqaQrYn2i6o";
+    private String serverKey = "YOUR_SERVER_KEY";
     private LatLng camera = new LatLng(37.782437, -122.4281893);
     private LatLng origin = new LatLng(37.7849569, -122.4068855);
     private LatLng destination = new LatLng(37.7814432, -122.4460177);

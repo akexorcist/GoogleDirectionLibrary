@@ -27,7 +27,7 @@ import java.util.List;
 public class TransitDirectionActivity extends AppCompatActivity implements OnMapReadyCallback, View.OnClickListener, DirectionCallback {
     private Button btnRequestDirection;
     private GoogleMap googleMap;
-    private String serverKey = "AIzaSyDFWdlR5DG1VYXSaMwG62ilYqaQrYn2i6o";
+    private String serverKey = "YOUR_SERVER_KEY";
     private LatLng camera = new LatLng(13.7457211, 100.5646619);
     private LatLng origin = new LatLng(13.7371063, 100.5642539);
     private LatLng destination = new LatLng(13.7604896, 100.5594266);
