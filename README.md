@@ -5,6 +5,37 @@
 ![Google Direction Library](https://raw.githubusercontent.com/akexorcist/Android-GoogleDirectionLibrary/master/image/google-direction-library-sample_header.jpg)
 Android library for Google Maps Direction API for using with Google Maps for Android
 
+![Google Direction Library](https://raw.githubusercontent.com/akexorcist/Android-GoogleDirectionLibrary/master/image/google-direction-library-sample_01.jpg)
+
+![Google Direction Library](https://raw.githubusercontent.com/akexorcist/Android-GoogleDirectionLibrary/master/image/google-direction-library-sample_02.jpg)
+
+
+Sample Code
+===============================
+
+```java
+GoogleDirection.withServerKey("YOUR_SERVER_API_KEY")
+        .from(new LatLng(37.7681994, -122.444538))
+		    .to(new LatLng(37.7749003,-122.4034934))
+		    .avoid(AvoidType.FERRIES)
+		    .avoid(AvoidType.HIGHWAYS)
+		    .execute(new DirectionCallback() {
+    @Override
+    public void onDirectionSuccess(Direction direction) {
+        if(direction.isOK()) {
+            // Do something
+        } else {
+            // Do something
+        }
+    }
+
+    @Override
+    public void onDirectionFailure(Throwable t) {
+        // Do something
+    }
+});
+```
+
 
 Demo
 ===============================
