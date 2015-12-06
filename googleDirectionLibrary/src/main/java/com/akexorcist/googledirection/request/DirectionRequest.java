@@ -55,10 +55,10 @@ public class DirectionRequest {
 
     public DirectionRequest avoid(String avoid) {
         String oldAvoid = param.getAvoid();
-        if(oldAvoid.isEmpty()) {
-            oldAvoid = "";
-        } else {
+        if(oldAvoid != null && !oldAvoid.isEmpty()) {
             oldAvoid += "|";
+        } else {
+            oldAvoid = "";
         }
         oldAvoid += avoid;
         param.setAvoid(oldAvoid);
@@ -67,10 +67,10 @@ public class DirectionRequest {
 
     public DirectionRequest transitMode(String transitMode) {
         String oldTransitMode = param.getTransitMode();
-        if(oldTransitMode.isEmpty()) {
-            oldTransitMode = "";
-        } else {
+        if(oldTransitMode != null && !oldTransitMode.isEmpty()) {
             oldTransitMode += "|";
+        } else {
+            oldTransitMode = "";
         }
         oldTransitMode += transitMode;
         param.setTransitMode(oldTransitMode);
