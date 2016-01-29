@@ -27,12 +27,14 @@ public class DirectionRequestParam {
     LatLng origin;
     LatLng destination;
     String transportMode;
+    String departureTime;
     String language;
     String unit;
     String avoid;
     String transitMode;
     boolean alternatives;
     String apiKey;
+
 
     public LatLng getOrigin() {
         return origin;
@@ -104,8 +106,18 @@ public class DirectionRequestParam {
         return apiKey;
     }
 
+    public String getDepartureTime() {
+        return departureTime;
+    }
+
+    public void setDepartureTime(String departureTime) {
+        this.departureTime = departureTime;
+    }
+
     public DirectionRequestParam setApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
     }
+
+
 }

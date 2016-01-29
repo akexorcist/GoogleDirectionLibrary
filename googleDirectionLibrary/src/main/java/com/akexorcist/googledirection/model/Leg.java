@@ -39,6 +39,8 @@ public class Leg {
     TimeInfo departureTime;
     Info distance;
     Info duration;
+    @SerializedName("duration_in_traffic")
+    Info durationInTraffic;
     @SerializedName("end_address")
     String endAddress;
     @SerializedName("end_location")
@@ -66,6 +68,10 @@ public class Leg {
 
     public Info getDuration() {
         return duration;
+    }
+
+    public Info getDurationInTraffic() {
+        return durationInTraffic;
     }
 
     public String getEndAddress() {

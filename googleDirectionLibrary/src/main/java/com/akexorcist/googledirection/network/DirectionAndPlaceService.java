@@ -34,6 +34,7 @@ public interface DirectionAndPlaceService {
     Call<Direction> getDirection(@Query("origin") String origin,
                                  @Query("destination") String destination,
                                  @Query("mode") String transportMode,
+                                 @Query("departure_time") String departureTime,
                                  @Query("language") String language,
                                  @Query("units") String units,
                                  @Query("avoid") String avoid,
