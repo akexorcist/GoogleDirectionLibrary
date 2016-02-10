@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/akexorcist/Android-GoogleDirectionLibrary.svg?branch=master)](https://travis-ci.org/akexorcist/Android-GoogleDirectionLibrary) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.akexorcist/googledirectionlibrary/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.akexorcist/googledirectionlibrary)
-
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Android--GoogleDirectionAndPlaceLibrary-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/1374) [![Build Status](https://travis-ci.org/akexorcist/Android-GoogleDirectionLibrary.svg?branch=master)](https://travis-ci.org/akexorcist/Android-GoogleDirectionLibrary) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.akexorcist/googledirectionlibrary/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.akexorcist/googledirectionlibrary) [![Methods Count](https://img.shields.io/badge/Methods and size-core: 561 | deps: 20617 | 112 KB-e91e63.svg)](http://www.methodscount.com/?lib=com.akexorcist%3Agoogledirectionlibrary%3A1.0.3)
 
 # Android-GoogleDirectionLibrary
 ![Google Direction Library](https://raw.githubusercontent.com/akexorcist/Android-GoogleDirectionLibrary/master/image/google-direction-library_header.jpg)
