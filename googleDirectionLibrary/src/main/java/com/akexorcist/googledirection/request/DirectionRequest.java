@@ -82,10 +82,16 @@ public class DirectionRequest {
         return this;
     }
 
+    public DirectionRequest departureTime(String time) {
+        param.setDepartureTime(time);
+        return this;
+    }
+
     public void execute(final DirectionCallback callback) {
         Call<Direction> direction = DirectionAndPlaceConnection.createService().getDirection(param.getOrigin().latitude + "," + param.getOrigin().longitude,
                 param.getDestination().latitude + "," + param.getDestination().longitude,
                 param.getTransportMode(),
+                param.getDepartureTime(),
                 param.getLanguage(),
                 param.getUnit(),
                 param.getAvoid(),
