@@ -21,7 +21,7 @@ GoogleDirection.withServerKey("YOUR_SERVER_API_KEY")
 		    .avoid(AvoidType.HIGHWAYS)
 		    .execute(new DirectionCallback() {
     @Override
-    public void onDirectionSuccess(Direction direction) {
+    public void onDirectionSuccess(Direction direction, String rawBody) {
         if(direction.isOK()) {
             // Do something
         } else {
