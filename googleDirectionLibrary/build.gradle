@@ -1,4 +1,14 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.neenbedankt.android-apt'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+    }
+}
 
 android {
     compileSdkVersion Integer.parseInt(project.ANDROID_COMPILE_SDK_VERSION)
@@ -27,12 +37,16 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.squareup.retrofit:retrofit:2.0.0-beta2'
-    compile 'com.squareup.retrofit:converter-gson:2.0.0-beta2'
-    compile 'com.squareup.okhttp:logging-interceptor:2.6.0'
-    compile 'com.google.android.gms:play-services-maps:8.3.0'
+    compile 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
+    compile ('com.squareup.retrofit2:converter-gson:2.0.0-beta4') {
+        exclude module: 'retrofit'
+    }
+    compile ('com.google.android.gms:play-services-maps:8.4.0') {
+        exclude module: 'support-annotations'
+        exclude module: 'support-v4'
+    }
     compile "org.parceler:parceler-api:1.0.4"
-    provided "org.parceler:parceler:1.0.4"
+    apt "org.parceler:parceler:1.0.4"
 }
 
 apply from: '../maven_push.gradle'
