@@ -67,7 +67,7 @@ public class TransitDirectionActivity extends AppCompatActivity implements OnMap
     }
 
     @Override
-    public void onDirectionSuccess(Direction direction) {
+    public void onDirectionSuccess(Direction direction, String rawBody) {
         Snackbar.make(btnRequestDirection, "Success with status : " + direction.getStatus(), Snackbar.LENGTH_SHORT).show();
         if (direction.isOK()) {
             ArrayList<LatLng> sectionPositionList = direction.getRouteList().get(0).getLegList().get(0).getSectionPoint();

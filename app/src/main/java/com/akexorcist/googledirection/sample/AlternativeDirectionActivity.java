@@ -67,7 +67,7 @@ public class AlternativeDirectionActivity extends AppCompatActivity implements O
     }
 
     @Override
-    public void onDirectionSuccess(Direction direction) {
+    public void onDirectionSuccess(Direction direction, String rawBody) {
         Snackbar.make(btnRequestDirection, "Success with status : " + direction.getStatus(), Snackbar.LENGTH_SHORT).show();
         if (direction.isOK()) {
             googleMap.addMarker(new MarkerOptions().position(origin));
