@@ -23,10 +23,9 @@ import com.akexorcist.googledirection.network.DirectionAndPlaceConnection;
 import com.akexorcist.googledirection.DirectionCallback;
 import com.google.android.gms.maps.model.LatLng;
 
-import retrofit.Call;
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by Akexorcist on 11/29/15 AD.
@@ -101,12 +100,14 @@ public class DirectionRequest {
 
         direction.enqueue(new Callback<Direction>() {
             @Override
-            public void onResponse(Response<Direction> response, Retrofit retrofit) {
-                callback.onDirectionSuccess(response.body());
+            public void onResponse(Call<Direction> call, Response<Direction> response) {
+                if(callback != null) {
+                    callback.onDirectionSuccess(response.body());
+                }
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<Direction> call, Throwable t) {
                 callback.onDirectionFailure(t);
             }
         });

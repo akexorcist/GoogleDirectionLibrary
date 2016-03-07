@@ -20,16 +20,17 @@ package com.akexorcist.googledirection.network;
 
 import com.akexorcist.googledirection.constant.DirectionUrl;
 
-import retrofit.GsonConverterFactory;
-import retrofit.Retrofit;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by Akexorcist on 11/29/15 AD.
  */
 public class DirectionAndPlaceConnection {
     private static DirectionAndPlaceService service;
+
     public static DirectionAndPlaceService createService() {
-        if(service == null) {
+        if (service == null) {
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(DirectionUrl.MAPS_API_URL)
                     .addConverterFactory(GsonConverterFactory.create())

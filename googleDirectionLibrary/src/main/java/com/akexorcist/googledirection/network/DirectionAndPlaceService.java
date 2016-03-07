@@ -21,9 +21,9 @@ package com.akexorcist.googledirection.network;
 import com.akexorcist.googledirection.constant.DirectionUrl;
 import com.akexorcist.googledirection.model.Direction;
 
-import retrofit.Call;
-import retrofit.http.GET;
-import retrofit.http.Query;
+import retrofit2.Call;
+import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 /**
  * Created by Akexorcist on 11/29/15 AD.
