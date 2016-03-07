@@ -27,9 +27,18 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by Akexorcist on 11/29/15 AD.
  */
 public class DirectionAndPlaceConnection {
-    private static DirectionAndPlaceService service;
+    private static DirectionAndPlaceConnection connection;
 
-    public static DirectionAndPlaceService createService() {
+    public static DirectionAndPlaceConnection getInstance() {
+        if (connection == null) {
+            connection = new DirectionAndPlaceConnection();
+        }
+        return connection;
+    }
+
+    private DirectionAndPlaceService service;
+
+    public DirectionAndPlaceService createService() {
         if (service == null) {
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(DirectionUrl.MAPS_API_URL)
