@@ -48,7 +48,7 @@ public class DirectionConverter {
 
         // Get encoded points location
         if (step.getPolyline() != null) {
-            ArrayList<LatLng> decodedPointList = step.getPolyline().getPointList();
+            List<LatLng> decodedPointList = step.getPolyline().getPointList();
             if (decodedPointList != null && decodedPointList.size() > 0) {
                 for (LatLng position : step.getPolyline().getPointList()) {
                     directionPointList.add(position);
@@ -73,7 +73,7 @@ public class DirectionConverter {
         return directionPointList;
     }
 
-    public static ArrayList<LatLng> decodePoly(String encoded) {
+    public static List<LatLng> decodePoly(String encoded) {
         ArrayList<LatLng> poly = new ArrayList<>();
         int index = 0, len = encoded.length();
         int lat = 0, lng = 0;
@@ -116,7 +116,7 @@ public class DirectionConverter {
             for (Step step : stepList) {
                 ArrayList<LatLng> directionPointList = new ArrayList<>();
                 convertStepToPosition(step, directionPointList);
-                if(step.isContainStepList()) {
+                if (step.isContainStepList()) {
                     polylineOptionsList.add(createPolyline(context, directionPointList, walkingWidth, walkingColor));
                 } else {
                     polylineOptionsList.add(createPolyline(context, directionPointList, transitWidth, transitColor));
@@ -128,7 +128,6 @@ public class DirectionConverter {
 
     private static int dpToPx(Context context, int dp) {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-        int px = Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
-        return px;
+        return Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
     }
 }

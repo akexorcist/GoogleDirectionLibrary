@@ -24,7 +24,7 @@ import com.google.gson.annotations.SerializedName;
 
 import org.parceler.Parcel;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Akexorcist on 11/29/15 AD.
@@ -39,7 +39,7 @@ public class RoutePolyline {
         return rawPointList;
     }
 
-    public ArrayList<LatLng> getPointList() {
+    public List<LatLng> getPointList() {
         return DirectionConverter.decodePoly(rawPointList);
     }
 }
