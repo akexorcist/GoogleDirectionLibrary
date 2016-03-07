@@ -36,6 +36,8 @@ public class Direction {
     @SerializedName("routes")
     List<Route> routeList;
     String status;
+    @SerializedName("error_message")
+    String errorMessage;
 
     public List<GeocodedWaypoint> getGeocodedWaypointList() {
         return geocodedWaypointList;
@@ -51,5 +53,9 @@ public class Direction {
 
     public boolean isOK() {
         return status.equals(RequestResult.OK);
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
     }
 }
