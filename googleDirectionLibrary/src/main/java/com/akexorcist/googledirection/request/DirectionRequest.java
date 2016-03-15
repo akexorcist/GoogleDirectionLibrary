@@ -24,6 +24,8 @@ import com.akexorcist.googledirection.network.DirectionAndPlaceConnection;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -36,6 +38,11 @@ public class DirectionRequest {
 
     public DirectionRequest(String apiKey, LatLng origin, LatLng destination) {
         param = new DirectionRequestParam().setApiKey(apiKey).setOrigin(origin).setDestination(destination);
+    }
+
+    public DirectionRequest waypoints(List<LatLng> waypoints) {
+        param.setWaypoints(waypoints);
+        return this;
     }
 
     public DirectionRequest transportMode(String transportMode) {
@@ -92,6 +99,7 @@ public class DirectionRequest {
                 .createService()
                 .getDirection(param.getOrigin().latitude + "," + param.getOrigin().longitude,
                         param.getDestination().latitude + "," + param.getDestination().longitude,
+                        waypointsToString(param.getWaypoints()),
                         param.getTransportMode(),
                         param.getDepartureTime(),
                         param.getLanguage(),
@@ -114,5 +122,15 @@ public class DirectionRequest {
                 callback.onDirectionFailure(t);
             }
         });
+    }
+
+    private String waypointsToString(List<LatLng> waypoints){
+        String string = "";
+        if (waypoints != null && !waypoints.isEmpty()) {
+            for (int i = 0; i < waypoints.size(); i++) {
+                string += ((i != 0) ? "|" : "") +  waypoints.get(i).latitude + "," + waypoints.get(i).longitude;
+            }
+        }
+        return string;
     }
 }

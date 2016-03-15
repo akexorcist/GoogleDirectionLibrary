@@ -20,6 +20,8 @@ package com.akexorcist.googledirection.request;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.util.List;
+
 /**
  * Created by Akexorcist on 11/29/15 AD.
  */
@@ -34,6 +36,10 @@ public class DirectionRequestParam {
     String transitMode;
     boolean alternatives;
     String apiKey;
+
+
+
+    private List<LatLng> waypoints;
 
 
     public LatLng getOrigin() {
@@ -119,5 +125,11 @@ public class DirectionRequestParam {
         return this;
     }
 
+    public List<LatLng> getWaypoints() {
+        return waypoints;
+    }
 
+    public void setWaypoints(List<LatLng> waypoints) {
+        this.waypoints = waypoints;
+    }
 }

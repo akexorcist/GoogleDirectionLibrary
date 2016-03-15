@@ -102,7 +102,7 @@ public class DirectionConverter {
         return poly;
     }
 
-    public static PolylineOptions createPolyline(Context context, ArrayList<LatLng> locationList, int width, int color) {
+    public static PolylineOptions createPolyline(Context context, List<LatLng> locationList, int width, int color) {
         PolylineOptions rectLine = new PolylineOptions().width(dpToPx(context, width)).color(color).geodesic(true);
         for (LatLng location : locationList) {
             rectLine.add(location);
