@@ -40,10 +40,6 @@ public class DirectionRequest {
         param = new DirectionRequestParam().setApiKey(apiKey).setOrigin(origin).setDestination(destination);
     }
 
-    public DirectionRequest waypoints(List<LatLng> waypoints) {
-        param.setWaypoints(waypoints);
-        return this;
-    }
 
     public DirectionRequest transportMode(String transportMode) {
         param.setTransportMode(transportMode);
@@ -94,6 +90,16 @@ public class DirectionRequest {
         return this;
     }
 
+    public DirectionRequest waypoints(List<LatLng> waypoints) {
+        param.setWaypoints(waypoints);
+        return this;
+    }
+
+    public DirectionRequest optimizeWaypoints(boolean optimize) {
+        param.setOptimizeWaypoints(optimize);
+        return this;
+    }
+
     public void execute(final DirectionCallback callback) {
         Call<Direction> direction = DirectionAndPlaceConnection.getInstance()
                 .createService()
@@ -125,12 +131,14 @@ public class DirectionRequest {
     }
 
     private String waypointsToString(List<LatLng> waypoints){
-        String string = "";
         if (waypoints != null && !waypoints.isEmpty()) {
-            for (int i = 0; i < waypoints.size(); i++) {
-                string += ((i != 0) ? "|" : "") +  waypoints.get(i).latitude + "," + waypoints.get(i).longitude;
+            String string = param.isOptimizeWaypoints() ? "optimize:true|" : "";
+            string += waypoints.get(0).latitude + "," + waypoints.get(0).longitude;
+            for (int i = 1; i < waypoints.size(); i++) {
+                string += "|" + waypoints.get(i).latitude + "," + waypoints.get(i).longitude;
             }
+            return string;
         }
-        return string;
+        return null;
     }
 }

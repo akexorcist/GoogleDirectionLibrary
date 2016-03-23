@@ -36,10 +36,8 @@ public class DirectionRequestParam {
     String transitMode;
     boolean alternatives;
     String apiKey;
-
-
-
-    private List<LatLng> waypoints;
+    List<LatLng> waypoints;
+    boolean optimizeWaypoints;
 
 
     public LatLng getOrigin() {
@@ -132,4 +130,13 @@ public class DirectionRequestParam {
     public void setWaypoints(List<LatLng> waypoints) {
         this.waypoints = waypoints;
     }
+
+    public boolean isOptimizeWaypoints() {
+        return optimizeWaypoints;
+    }
+
+    public void setOptimizeWaypoints(boolean optimizeWaypoints) {
+        this.optimizeWaypoints = optimizeWaypoints;
+    }
+
 }
