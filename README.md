@@ -66,6 +66,11 @@ English Version : http://www.akexorcist.com/2015/12/google-direction-library-for
 
 Thai Version : http://www.akexorcist.com/2015/12/google-direction-library-for-android-th.html
 
+Special Thank
+===========================
+[@jonaslins](https://github.com/jonaslins)
+
+[@Will1229](https://github.com/Will1229)
 
 Licence
 ===========================
