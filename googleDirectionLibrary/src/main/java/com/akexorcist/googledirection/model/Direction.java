@@ -18,10 +18,11 @@ limitations under the License.
 
 package com.akexorcist.googledirection.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.akexorcist.googledirection.constant.RequestResult;
 import com.google.gson.annotations.SerializedName;
-
-import org.parceler.Parcel;
 
 import java.util.List;
 
@@ -29,33 +30,80 @@ import java.util.List;
  * Created by Akexorcist on 11/29/15 AD.
  */
 
-@Parcel(parcelsIndex = false)
-public class Direction {
+@SuppressWarnings("WeakerAccess")
+public class Direction implements Parcelable {
     @SerializedName("geocoded_waypoints")
-    List<GeocodedWaypoint> geocodedWaypointList;
+    private List<GeocodedWaypoint> geocodedWaypointList;
     @SerializedName("routes")
-    List<Route> routeList;
-    String status;
+    private List<Route> routeList;
+    private String status;
     @SerializedName("error_message")
-    String errorMessage;
+    private String errorMessage;
+
+    public Direction() {
+    }
+
+    protected Direction(Parcel in) {
+        status = in.readString();
+        errorMessage = in.readString();
+    }
+
+    public void setGeocodedWaypointList(List<GeocodedWaypoint> geocodedWaypointList) {
+        this.geocodedWaypointList = geocodedWaypointList;
+    }
 
     public List<GeocodedWaypoint> getGeocodedWaypointList() {
         return geocodedWaypointList;
+    }
+
+    public void setRouteList(List<Route> routeList) {
+        this.routeList = routeList;
     }
 
     public List<Route> getRouteList() {
         return routeList;
     }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public String getStatus() {
         return status;
     }
 
-    public boolean isOK() {
-        return status.equals(RequestResult.OK);
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
     }
 
     public String getErrorMessage() {
         return errorMessage;
     }
+
+    public boolean isOK() {
+        return RequestResult.OK.equals(status);
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(status);
+        dest.writeString(errorMessage);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Direction> CREATOR = new Creator<Direction>() {
+        @Override
+        public Direction createFromParcel(Parcel in) {
+            return new Direction(in);
+        }
+
+        @Override
+        public Direction[] newArray(int size) {
+            return new Direction[size];
+        }
+    };
 }

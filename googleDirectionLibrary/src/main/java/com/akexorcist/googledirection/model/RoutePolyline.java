@@ -18,11 +18,12 @@ limitations under the License.
 
 package com.akexorcist.googledirection.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.akexorcist.googledirection.util.DirectionConverter;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.annotations.SerializedName;
-
-import org.parceler.Parcel;
 
 import java.util.List;
 
@@ -30,16 +31,50 @@ import java.util.List;
  * Created by Akexorcist on 11/29/15 AD.
  */
 
-@Parcel(parcelsIndex = false)
-public class RoutePolyline {
+@SuppressWarnings("WeakerAccess")
+public class RoutePolyline implements Parcelable {
     @SerializedName("points")
-    String rawPointList;
+    private String rawPointList;
+
+    public RoutePolyline() {
+    }
+
+    protected RoutePolyline(Parcel in) {
+        rawPointList = in.readString();
+    }
 
     public String getRawPointList() {
         return rawPointList;
     }
 
+    public void setRawPointList(String rawPointList) {
+        this.rawPointList = rawPointList;
+    }
+
     public List<LatLng> getPointList() {
         return DirectionConverter.decodePoly(rawPointList);
     }
+
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(rawPointList);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<RoutePolyline> CREATOR = new Creator<RoutePolyline>() {
+        @Override
+        public RoutePolyline createFromParcel(Parcel in) {
+            return new RoutePolyline(in);
+        }
+
+        @Override
+        public RoutePolyline[] newArray(int size) {
+            return new RoutePolyline[size];
+        }
+    };
 }

@@ -18,9 +18,10 @@ limitations under the License.
 
 package com.akexorcist.googledirection.model;
 
-import com.google.gson.annotations.SerializedName;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-import org.parceler.Parcel;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
@@ -28,55 +29,101 @@ import java.util.List;
  * Created by Akexorcist on 11/29/15 AD.
  */
 
-@Parcel(parcelsIndex = false)
-public class Step {
-    Info distance;
-    Info duration;
+@SuppressWarnings("WeakerAccess")
+public class Step implements Parcelable {
+    private Info distance;
+    private Info duration;
     @SerializedName("end_location")
-    Coordination endLocation;
+    private Coordination endLocation;
     @SerializedName("html_instructions")
-    String htmlInstruction;
-    String maneuver;
+    private String htmlInstruction;
+    private String maneuver;
     @SerializedName("start_location")
-    Coordination startLocation;
+    private Coordination startLocation;
     @SerializedName("transit_details")
-    TransitDetail transitDetail;
+    private TransitDetail transitDetail;
     @SerializedName("steps")
-    List<Step> stepList;
-    RoutePolyline polyline;
+    private List<Step> stepList;
+    private RoutePolyline polyline;
     @SerializedName("travel_mode")
-    String travelMode;
+    private String travelMode;
+
+    public Step() {
+    }
+
+    protected Step(Parcel in) {
+        distance = in.readParcelable(Info.class.getClassLoader());
+        duration = in.readParcelable(Info.class.getClassLoader());
+        endLocation = in.readParcelable(Coordination.class.getClassLoader());
+        htmlInstruction = in.readString();
+        maneuver = in.readString();
+        startLocation = in.readParcelable(Coordination.class.getClassLoader());
+        stepList = in.createTypedArrayList(Step.CREATOR);
+        travelMode = in.readString();
+    }
 
     public Info getDistance() {
         return distance;
+    }
+
+    public void setDistance(Info distance) {
+        this.distance = distance;
     }
 
     public Info getDuration() {
         return duration;
     }
 
+    public void setDuration(Info duration) {
+        this.duration = duration;
+    }
+
     public Coordination getEndLocation() {
         return endLocation;
+    }
+
+    public void setEndLocation(Coordination endLocation) {
+        this.endLocation = endLocation;
     }
 
     public String getHtmlInstruction() {
         return htmlInstruction;
     }
 
+    public void setHtmlInstruction(String htmlInstruction) {
+        this.htmlInstruction = htmlInstruction;
+    }
+
     public String getManeuver() {
         return maneuver;
+    }
+
+    public void setManeuver(String maneuver) {
+        this.maneuver = maneuver;
     }
 
     public Coordination getStartLocation() {
         return startLocation;
     }
 
+    public void setStartLocation(Coordination startLocation) {
+        this.startLocation = startLocation;
+    }
+
     public TransitDetail getTransitDetail() {
         return transitDetail;
     }
 
+    public void setTransitDetail(TransitDetail transitDetail) {
+        this.transitDetail = transitDetail;
+    }
+
     public List<Step> getStepList() {
         return stepList;
+    }
+
+    public void setStepList(List<Step> stepList) {
+        this.stepList = stepList;
     }
 
     public boolean isContainStepList() {
@@ -87,7 +134,44 @@ public class Step {
         return polyline;
     }
 
+    public void setPolyline(RoutePolyline polyline) {
+        this.polyline = polyline;
+    }
+
     public String getTravelMode() {
         return travelMode;
     }
+
+    public void setTravelMode(String travelMode) {
+        this.travelMode = travelMode;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(distance, flags);
+        dest.writeParcelable(duration, flags);
+        dest.writeParcelable(endLocation, flags);
+        dest.writeString(htmlInstruction);
+        dest.writeString(maneuver);
+        dest.writeParcelable(startLocation, flags);
+        dest.writeTypedList(stepList);
+        dest.writeString(travelMode);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Step> CREATOR = new Creator<Step>() {
+        @Override
+        public Step createFromParcel(Parcel in) {
+            return new Step(in);
+        }
+
+        @Override
+        public Step[] newArray(int size) {
+            return new Step[size];
+        }
+    };
 }

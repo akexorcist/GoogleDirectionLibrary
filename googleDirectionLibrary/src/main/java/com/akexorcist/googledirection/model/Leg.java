@@ -22,8 +22,6 @@ import com.akexorcist.googledirection.util.DirectionConverter;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.annotations.SerializedName;
 
-import org.parceler.Parcel;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,71 +29,114 @@ import java.util.List;
  * Created by Akexorcist on 11/29/15 AD.
  */
 
-@Parcel(parcelsIndex = false)
 public class Leg {
     @SerializedName("arrival_time")
-    TimeInfo arrivalTime;
+    private TimeInfo arrivalTime;
     @SerializedName("departure_time")
-    TimeInfo departureTime;
-    Info distance;
-    Info duration;
+    private TimeInfo departureTime;
+    private Info distance;
+    private Info duration;
     @SerializedName("duration_in_traffic")
-    Info durationInTraffic;
+    private Info durationInTraffic;
     @SerializedName("end_address")
-    String endAddress;
+    private String endAddress;
     @SerializedName("end_location")
-    Coordination endLocation;
+    private Coordination endLocation;
     @SerializedName("start_address")
-    String startAddress;
+    private String startAddress;
     @SerializedName("start_location")
-    Coordination startLocation;
+    private Coordination startLocation;
     @SerializedName("steps")
-    List<Step> stepList;
+    private List<Step> stepList;
     @SerializedName("via_waypoint")
-    List<Waypoint> viaWaypointList;
+    private List<Waypoint> viaWaypointList;
 
     public TimeInfo getArrivalTime() {
         return arrivalTime;
+    }
+
+    public void setArrivalTime(TimeInfo arrivalTime) {
+        this.arrivalTime = arrivalTime;
     }
 
     public TimeInfo getDepartureTime() {
         return departureTime;
     }
 
+    public void setDepartureTime(TimeInfo departureTime) {
+        this.departureTime = departureTime;
+    }
+
     public Info getDistance() {
         return distance;
+    }
+
+    public void setDistance(Info distance) {
+        this.distance = distance;
     }
 
     public Info getDuration() {
         return duration;
     }
 
+    public void setDuration(Info duration) {
+        this.duration = duration;
+    }
+
     public Info getDurationInTraffic() {
         return durationInTraffic;
+    }
+
+    public void setDurationInTraffic(Info durationInTraffic) {
+        this.durationInTraffic = durationInTraffic;
     }
 
     public String getEndAddress() {
         return endAddress;
     }
 
+    public void setEndAddress(String endAddress) {
+        this.endAddress = endAddress;
+    }
+
     public Coordination getEndLocation() {
         return endLocation;
+    }
+
+    public void setEndLocation(Coordination endLocation) {
+        this.endLocation = endLocation;
     }
 
     public String getStartAddress() {
         return startAddress;
     }
 
+    public void setStartAddress(String startAddress) {
+        this.startAddress = startAddress;
+    }
+
     public Coordination getStartLocation() {
         return startLocation;
+    }
+
+    public void setStartLocation(Coordination startLocation) {
+        this.startLocation = startLocation;
     }
 
     public List<Step> getStepList() {
         return stepList;
     }
 
+    public void setStepList(List<Step> stepList) {
+        this.stepList = stepList;
+    }
+
     public List<Waypoint> getViaWaypointList() {
         return viaWaypointList;
+    }
+
+    public void setViaWaypointList(List<Waypoint> viaWaypointList) {
+        this.viaWaypointList = viaWaypointList;
     }
 
     public ArrayList<LatLng> getDirectionPoint() {
