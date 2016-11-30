@@ -18,8 +18,11 @@ limitations under the License.
 
 package com.akexorcist.googledirection.network;
 
+import com.akexorcist.googledirection.config.GoogleDirectionConfiguration;
 import com.akexorcist.googledirection.constant.DirectionUrl;
 
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -41,11 +44,30 @@ public class DirectionAndPlaceConnection {
     public DirectionAndPlaceService createService() {
         if (service == null) {
             Retrofit retrofit = new Retrofit.Builder()
+                    .client(getClient())
                     .baseUrl(DirectionUrl.MAPS_API_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
             service = retrofit.create(DirectionAndPlaceService.class);
         }
         return service;
+    }
+
+    private OkHttpClient getClient() {
+        OkHttpClient client = GoogleDirectionConfiguration.getInstance().getCustomClient();
+        if (client != null) {
+            return client;
+        }
+        return createDefaultClient();
+    }
+
+    private OkHttpClient createDefaultClient() {
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        if (GoogleDirectionConfiguration.getInstance().isLogEnabled()) {
+            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            builder.addInterceptor(interceptor);
+        }
+        return builder.build();
     }
 }
