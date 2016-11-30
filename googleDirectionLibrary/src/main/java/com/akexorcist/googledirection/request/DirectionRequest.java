@@ -20,7 +20,7 @@ package com.akexorcist.googledirection.request;
 
 import com.akexorcist.googledirection.DirectionCallback;
 import com.akexorcist.googledirection.model.Direction;
-import com.akexorcist.googledirection.network.DirectionAndPlaceConnection;
+import com.akexorcist.googledirection.network.DirectionConnection;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
 
@@ -88,7 +88,7 @@ public class DirectionRequest {
     }
 
     public void execute(final DirectionCallback callback) {
-        Call<Direction> direction = DirectionAndPlaceConnection.getInstance()
+        Call<Direction> direction = DirectionConnection.getInstance()
                 .createService()
                 .getDirection(param.getOrigin().latitude + "," + param.getOrigin().longitude,
                         param.getDestination().latitude + "," + param.getDestination().longitude,

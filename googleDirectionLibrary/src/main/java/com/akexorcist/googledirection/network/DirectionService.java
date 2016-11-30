@@ -28,7 +28,7 @@ import retrofit2.http.Query;
 /**
  * Created by Akexorcist on 11/29/15 AD.
  */
-public interface DirectionAndPlaceService {
+public interface DirectionService {
 
     @GET(DirectionUrl.DIRECTION_API_URL)
     Call<Direction> getDirection(@Query("origin") String origin,

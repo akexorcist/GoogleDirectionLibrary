@@ -29,26 +29,26 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * Created by Akexorcist on 11/29/15 AD.
  */
-public class DirectionAndPlaceConnection {
-    private static DirectionAndPlaceConnection connection;
+public class DirectionConnection {
+    private static DirectionConnection connection;
 
-    public static DirectionAndPlaceConnection getInstance() {
+    public static DirectionConnection getInstance() {
         if (connection == null) {
-            connection = new DirectionAndPlaceConnection();
+            connection = new DirectionConnection();
         }
         return connection;
     }
 
-    private DirectionAndPlaceService service;
+    private DirectionService service;
 
-    public DirectionAndPlaceService createService() {
+    public DirectionService createService() {
         if (service == null) {
             Retrofit retrofit = new Retrofit.Builder()
                     .client(getClient())
                     .baseUrl(DirectionUrl.MAPS_API_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
-            service = retrofit.create(DirectionAndPlaceService.class);
+            service = retrofit.create(DirectionService.class);
         }
         return service;
     }
