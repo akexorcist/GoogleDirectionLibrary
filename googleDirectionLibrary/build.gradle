@@ -38,7 +38,7 @@ dependencies {
     compile('com.squareup.retrofit2:converter-gson:2.1.0') {
         exclude module: 'retrofit'
     }
-    compile('com.google.android.gms:play-services-maps:+') {
+    compile('com.google.android.gms:play-services-maps:10.0.1') {
         exclude module: 'support-annotations'
         exclude module: 'support-v4'
         exclude module: 'play-services-base'
