@@ -18,23 +18,48 @@ limitations under the License.
 
 package com.akexorcist.googledirection.request;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.android.gms.maps.model.LatLng;
+
+import java.util.List;
 
 /**
  * Created by Akexorcist on 11/29/15 AD.
  */
-public class DirectionRequestParam {
-    LatLng origin;
-    LatLng destination;
-    String transportMode;
-    String departureTime;
-    String language;
-    String unit;
-    String avoid;
-    String transitMode;
-    boolean alternatives;
-    String apiKey;
+@SuppressWarnings("WeakerAccess")
+public class DirectionRequestParam implements Parcelable {
+    private LatLng origin;
+    private LatLng destination;
+    private String transportMode;
+    private String departureTime;
+    private String language;
+    private String unit;
+    private String avoid;
+    private String transitMode;
+    private boolean alternatives;
+    private String apiKey;
+    private List<LatLng> waypoints;
+    private boolean optimizeWaypoints;
 
+    public DirectionRequestParam() {
+    }
+
+    protected DirectionRequestParam(Parcel in) {
+        origin = in.readParcelable(LatLng.class.getClassLoader());
+        destination = in.readParcelable(LatLng.class.getClassLoader());
+        transportMode = in.readString();
+        departureTime = in.readString();
+        language = in.readString();
+        unit = in.readString();
+        avoid = in.readString();
+        transitMode = in.readString();
+        alternatives = in.readByte() != 0;
+        apiKey = in.readString();
+        waypoints = in.createTypedArrayList(LatLng.CREATOR);
+        optimizeWaypoints = in.readByte() != 0;
+    }
 
     public LatLng getOrigin() {
         return origin;
@@ -106,6 +131,11 @@ public class DirectionRequestParam {
         return apiKey;
     }
 
+    public DirectionRequestParam setApiKey(String apiKey) {
+        this.apiKey = apiKey;
+        return this;
+    }
+
     public String getDepartureTime() {
         return departureTime;
     }
@@ -114,10 +144,52 @@ public class DirectionRequestParam {
         this.departureTime = departureTime;
     }
 
-    public DirectionRequestParam setApiKey(String apiKey) {
-        this.apiKey = apiKey;
-        return this;
+    public List<LatLng> getWaypoints() {
+        return waypoints;
     }
 
+    public void setWaypoints(List<LatLng> waypoints) {
+        this.waypoints = waypoints;
+    }
 
+    public boolean isOptimizeWaypoints() {
+        return optimizeWaypoints;
+    }
+
+    public void setOptimizeWaypoints(boolean optimizeWaypoints) {
+        this.optimizeWaypoints = optimizeWaypoints;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(origin, flags);
+        dest.writeParcelable(destination, flags);
+        dest.writeString(transportMode);
+        dest.writeString(departureTime);
+        dest.writeString(language);
+        dest.writeString(unit);
+        dest.writeString(avoid);
+        dest.writeString(transitMode);
+        dest.writeByte((byte) (alternatives ? 1 : 0));
+        dest.writeString(apiKey);
+        dest.writeTypedList(waypoints);
+        dest.writeByte((byte) (optimizeWaypoints ? 1 : 0));
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<DirectionRequestParam> CREATOR = new Creator<DirectionRequestParam>() {
+        @Override
+        public DirectionRequestParam createFromParcel(Parcel in) {
+            return new DirectionRequestParam(in);
+        }
+
+        @Override
+        public DirectionRequestParam[] newArray(int size) {
+            return new DirectionRequestParam[size];
+        }
+    };
 }

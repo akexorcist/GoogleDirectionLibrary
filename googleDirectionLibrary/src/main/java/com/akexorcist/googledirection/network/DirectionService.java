@@ -33,6 +33,7 @@ public interface DirectionService {
     @GET(DirectionUrl.DIRECTION_API_URL)
     Call<Direction> getDirection(@Query("origin") String origin,
                                  @Query("destination") String destination,
+                                 @Query("waypoints") String waypoints,
                                  @Query("mode") String transportMode,
                                  @Query("departure_time") String departureTime,
                                  @Query("language") String language,
