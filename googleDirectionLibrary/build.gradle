@@ -4,9 +4,6 @@ buildscript {
     repositories {
         mavenCentral()
     }
-    dependencies {
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
-    }
 }
 
 android {
@@ -43,6 +40,7 @@ dependencies {
     compile('com.google.android.gms:play-services-maps:+') {
         exclude module: 'support-annotations'
         exclude module: 'support-v4'
+        exclude module: 'play-services-base'
     }
 }
 
