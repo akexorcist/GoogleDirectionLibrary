@@ -66,6 +66,26 @@ English Version : http://www.akexorcist.com/2015/12/google-direction-library-for
 
 Thai Version : http://www.akexorcist.com/2015/12/google-direction-library-for-android-th.html
 
+
+ProGuard
+===========================
+```
+-keep class com.akexorcist.** { ; }
+-keep interface com.akexorcist.* { *; }
+
+-keep class com.google.android.gms.maps.** { ; }
+-keep interface com.google.android.gms.maps.* { *; }
+
+-dontwarn retrofit2.**
+-keep class retrofit2.** { *; }
+-keepattributes Signature
+-keepattributes Exceptions
+
+-keepclasseswithmembers class * {
+    @retrofit2.http.* <methods>;
+}
+```
+
 Special Thank
 ===========================
 [@jonaslins](https://github.com/jonaslins)
