@@ -72,10 +72,10 @@ Thai Version : http://www.akexorcist.com/2015/12/google-direction-library-for-an
 ProGuard
 ===========================
 ```
--keep class com.akexorcist.** { ; }
+-keep class com.akexorcist.** { *; }
 -keep interface com.akexorcist.* { *; }
 
--keep class com.google.android.gms.maps.** { ; }
+-keep class com.google.android.gms.maps.** { *; }
 -keep interface com.google.android.gms.maps.* { *; }
 
 -dontwarn retrofit2.**
