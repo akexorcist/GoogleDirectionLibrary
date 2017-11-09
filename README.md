@@ -36,6 +36,8 @@ GoogleDirection.withServerKey("YOUR_SERVER_API_KEY")
 });
 ```
 
+To get API key, please read [Get Google Maps Direction API Key](https://developers.google.com/maps/documentation/directions/get-api-key)
+
 
 Demo
 ===============================
