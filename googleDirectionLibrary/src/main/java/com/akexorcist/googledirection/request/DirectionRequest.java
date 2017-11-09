@@ -34,7 +34,7 @@ import retrofit2.Response;
  * Created by Akexorcist on 11/29/15 AD.
  */
 public class DirectionRequest {
-    protected DirectionRequestParam param;
+    private DirectionRequestParam param;
 
     public DirectionRequest(String apiKey, LatLng origin, LatLng destination) {
         param = new DirectionRequestParam().setApiKey(apiKey).setOrigin(origin).setDestination(destination);
@@ -131,12 +131,12 @@ public class DirectionRequest {
 
     private String waypointsToString(List<LatLng> waypoints) {
         if (waypoints != null && !waypoints.isEmpty()) {
-            String string = param.isOptimizeWaypoints() ? "optimize:true|" : "";
-            string += waypoints.get(0).latitude + "," + waypoints.get(0).longitude;
+            StringBuilder string = new StringBuilder(param.isOptimizeWaypoints() ? "optimize:true|" : "");
+            string.append(waypoints.get(0).latitude).append(",").append(waypoints.get(0).longitude);
             for (int i = 1; i < waypoints.size(); i++) {
-                string += "|" + waypoints.get(i).latitude + "," + waypoints.get(i).longitude;
+                string.append("|").append(waypoints.get(i).latitude).append(",").append(waypoints.get(i).longitude);
             }
-            return string;
+            return string.toString();
         }
         return null;
     }
