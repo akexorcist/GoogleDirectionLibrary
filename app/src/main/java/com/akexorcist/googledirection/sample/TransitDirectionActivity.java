@@ -37,7 +37,7 @@ public class TransitDirectionActivity extends AppCompatActivity implements OnMap
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transit_direction);
 
-        btnRequestDirection = (Button) findViewById(R.id.btn_request_direction);
+        btnRequestDirection = findViewById(R.id.btn_request_direction);
         btnRequestDirection.setOnClickListener(this);
 
         ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMapAsync(this);
