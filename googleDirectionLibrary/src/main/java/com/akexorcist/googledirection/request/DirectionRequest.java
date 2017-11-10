@@ -99,7 +99,7 @@ public class DirectionRequest {
         return this;
     }
 
-    public void execute(final DirectionCallback callback) {
+    public DirectionTask execute(final DirectionCallback callback) {
         Call<Direction> direction = DirectionConnection.getInstance()
                 .createService()
                 .getDirection(param.getOrigin().latitude + "," + param.getOrigin().longitude,
@@ -127,6 +127,7 @@ public class DirectionRequest {
                 callback.onDirectionFailure(t);
             }
         });
+        return new DirectionTask(direction);
     }
 
     private String waypointsToString(List<LatLng> waypoints) {
