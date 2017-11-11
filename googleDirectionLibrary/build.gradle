@@ -35,10 +35,10 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.9.0'
-    compile('com.squareup.retrofit2:converter-gson:+') {
+    compile('com.squareup.retrofit2:converter-gson:2.3.0') {
         exclude module: 'retrofit'
     }
-    compile('com.google.android.gms:play-services-maps:+') {
+    compile('com.google.android.gms:play-services-maps:11.6.0') {
         exclude module: 'support-annotations'
         exclude module: 'support-v4'
         exclude module: 'play-services-base'
