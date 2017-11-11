@@ -11,12 +11,14 @@ import com.akexorcist.googledirection.DirectionCallback;
 import com.akexorcist.googledirection.GoogleDirection;
 import com.akexorcist.googledirection.constant.TransportMode;
 import com.akexorcist.googledirection.model.Direction;
+import com.akexorcist.googledirection.model.Route;
 import com.akexorcist.googledirection.util.DirectionConverter;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
@@ -25,7 +27,6 @@ public class SimpleDirectionActivity extends AppCompatActivity implements OnMapR
     private Button btnRequestDirection;
     private GoogleMap googleMap;
     private String serverKey = "YOUR_SERVER_KEY";
-    private LatLng camera = new LatLng(37.782437, -122.4281893);
     private LatLng origin = new LatLng(37.7849569, -122.4068855);
     private LatLng destination = new LatLng(37.7814432, -122.4460177);
 
@@ -43,7 +44,6 @@ public class SimpleDirectionActivity extends AppCompatActivity implements OnMapR
     @Override
     public void onMapReady(GoogleMap googleMap) {
         this.googleMap = googleMap;
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(camera, 13));
     }
 
     @Override
@@ -67,18 +67,29 @@ public class SimpleDirectionActivity extends AppCompatActivity implements OnMapR
     public void onDirectionSuccess(Direction direction, String rawBody) {
         Snackbar.make(btnRequestDirection, "Success with status : " + direction.getStatus(), Snackbar.LENGTH_SHORT).show();
         if (direction.isOK()) {
+            Route route = direction.getRouteList().get(0);
             googleMap.addMarker(new MarkerOptions().position(origin));
             googleMap.addMarker(new MarkerOptions().position(destination));
 
-            ArrayList<LatLng> directionPositionList = direction.getRouteList().get(0).getLegList().get(0).getDirectionPoint();
+            ArrayList<LatLng> directionPositionList = route.getLegList().get(0).getDirectionPoint();
             googleMap.addPolyline(DirectionConverter.createPolyline(this, directionPositionList, 5, Color.RED));
+            setCameraWithCoordinationBounds(route);
 
             btnRequestDirection.setVisibility(View.GONE);
+        } else {
+            Snackbar.make(btnRequestDirection, direction.getStatus(), Snackbar.LENGTH_SHORT).show();
         }
     }
 
     @Override
     public void onDirectionFailure(Throwable t) {
         Snackbar.make(btnRequestDirection, t.getMessage(), Snackbar.LENGTH_SHORT).show();
+    }
+
+    private void setCameraWithCoordinationBounds(Route route) {
+        LatLng southwest = route.getBound().getSouthwestCoordination().getCoordination();
+        LatLng northeast = route.getBound().getNortheastCoordination().getCoordination();
+        LatLngBounds bounds = new LatLngBounds(southwest, northeast);
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100));
     }
 }
