@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn_simple).setOnClickListener(this);
         findViewById(R.id.btn_transit).setOnClickListener(this);
         findViewById(R.id.btn_alternative).setOnClickListener(this);
+        findViewById(R.id.btn_waypoints).setOnClickListener(this);
     }
 
     @Override
@@ -27,6 +28,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             goToTransitDirection();
         } else if (id == R.id.btn_alternative) {
             goToAlternativeDirection();
+        } else if (id == R.id.btn_waypoints) {
+            goToWaypointsDirection();
         }
     }
 
@@ -40,6 +43,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void goToAlternativeDirection() {
         openActivity(AlternativeDirectionActivity.class);
+    }
+
+    public void goToWaypointsDirection() {
+        openActivity(WaypointsDirectionActivity.class);
     }
 
     public void openActivity(Class<?> cs) {

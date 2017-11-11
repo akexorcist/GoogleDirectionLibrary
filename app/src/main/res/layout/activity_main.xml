@@ -30,5 +30,11 @@
             android:layout_height="match_parent"
             android:text="@string/alternative_direction" />
 
+        <Button
+            android:id="@+id/btn_waypoints"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/waypoints_direction" />
+
     </LinearLayout>
 </LinearLayout>

@@ -37,6 +37,10 @@
             android:name=".AlternativeDirectionActivity"
             android:label="@string/alternative_direction" />
 
+        <activity
+            android:name=".WaypointsDirectionActivity"
+            android:label="@string/waypoints_direction" />
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
