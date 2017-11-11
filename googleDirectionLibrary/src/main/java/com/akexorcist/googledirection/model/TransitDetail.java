@@ -37,7 +37,9 @@ public class TransitDetail implements Parcelable {
     private StopPoint departureStopPoint;
     @SerializedName("departure_time")
     private TimeInfo departureTime;
+    @SerializedName("line")
     private Line line;
+    @SerializedName("headsign")
     private String headsign;
     @SerializedName("num_stops")
     private String stopNumber;

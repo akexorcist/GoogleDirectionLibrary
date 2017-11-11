@@ -35,7 +35,8 @@ public class GeocodedWaypoint implements Parcelable {
     private String status;
     @SerializedName("place_id")
     private String placeId;
-    private List<String> types;
+    @SerializedName("types")
+    private List<String> typeList;
 
     public GeocodedWaypoint() {
     }
@@ -43,7 +44,7 @@ public class GeocodedWaypoint implements Parcelable {
     protected GeocodedWaypoint(Parcel in) {
         status = in.readString();
         placeId = in.readString();
-        types = in.createStringArrayList();
+        typeList = in.createStringArrayList();
     }
 
     public String getStatus() {
@@ -62,19 +63,19 @@ public class GeocodedWaypoint implements Parcelable {
         this.placeId = placeId;
     }
 
-    public List<String> getTypes() {
-        return types;
+    public List<String> getTypeList() {
+        return typeList;
     }
 
-    public void setTypes(List<String> types) {
-        this.types = types;
+    public void setTypeList(List<String> typeList) {
+        this.typeList = typeList;
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(status);
         dest.writeString(placeId);
-        dest.writeStringList(types);
+        dest.writeStringList(typeList);
     }
 
     @Override

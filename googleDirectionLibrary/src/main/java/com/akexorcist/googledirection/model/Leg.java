@@ -34,7 +34,9 @@ public class Leg {
     private TimeInfo arrivalTime;
     @SerializedName("departure_time")
     private TimeInfo departureTime;
+    @SerializedName("distance")
     private Info distance;
+    @SerializedName("duration")
     private Info duration;
     @SerializedName("duration_in_traffic")
     private Info durationInTraffic;

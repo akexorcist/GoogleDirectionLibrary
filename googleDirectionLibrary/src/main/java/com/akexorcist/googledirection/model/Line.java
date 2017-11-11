@@ -33,12 +33,15 @@ import java.util.List;
 public class Line implements Parcelable {
     @SerializedName("agencies")
     private List<Agency> agencyList;
+    @SerializedName("color")
     private String color;
+    @SerializedName("name")
     private String name;
     @SerializedName("short_name")
     private String shortName;
     @SerializedName("text_color")
     private String textColor;
+    @SerializedName("vehicle")
     private Vehicle vehicle;
 
     public Line() {

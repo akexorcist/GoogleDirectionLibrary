@@ -21,13 +21,17 @@ package com.akexorcist.googledirection.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by Akexorcist on 11/29/15 AD.
  */
 
 @SuppressWarnings("WeakerAccess")
 public class Info implements Parcelable {
+    @SerializedName("text")
     private String text;
+    @SerializedName("value")
     private String value;
 
     public Info() {

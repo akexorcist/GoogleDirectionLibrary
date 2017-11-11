@@ -21,13 +21,17 @@ package com.akexorcist.googledirection.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by Akexorcist on 11/29/15 AD.
  */
 
 @SuppressWarnings("WeakerAccess")
 public class Bound implements Parcelable {
+    @SerializedName("northeast")
     private Coordination northeast;
+    @SerializedName("southwest")
     private Coordination southwest;
 
     public Bound() {

@@ -30,6 +30,7 @@ import com.google.gson.annotations.SerializedName;
 
 @SuppressWarnings("WeakerAccess")
 public class Waypoint implements Parcelable {
+    @SerializedName("location")
     private Coordination location;
     @SerializedName("step_index")
     private int index;

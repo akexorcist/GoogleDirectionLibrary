@@ -31,12 +31,15 @@ import java.util.List;
 
 @SuppressWarnings("WeakerAccess")
 public class Step implements Parcelable {
+    @SerializedName("distance")
     private Info distance;
+    @SerializedName("duration")
     private Info duration;
     @SerializedName("end_location")
     private Coordination endLocation;
     @SerializedName("html_instructions")
     private String htmlInstruction;
+    @SerializedName("maneuver")
     private String maneuver;
     @SerializedName("start_location")
     private Coordination startLocation;
@@ -44,6 +47,7 @@ public class Step implements Parcelable {
     private TransitDetail transitDetail;
     @SerializedName("steps")
     private List<Step> stepList;
+    @SerializedName("polyline")
     private RoutePolyline polyline;
     @SerializedName("travel_mode")
     private String travelMode;

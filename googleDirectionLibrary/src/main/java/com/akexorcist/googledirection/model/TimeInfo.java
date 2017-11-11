@@ -29,9 +29,11 @@ import com.google.gson.annotations.SerializedName;
 
 @SuppressWarnings("WeakerAccess")
 public class TimeInfo implements Parcelable {
+    @SerializedName("text")
     private String text;
     @SerializedName("time_zone")
     private String timeZone;
+    @SerializedName("value")
     private String value;
 
     public TimeInfo() {

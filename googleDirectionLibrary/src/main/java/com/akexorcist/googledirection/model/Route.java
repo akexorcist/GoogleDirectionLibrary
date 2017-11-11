@@ -33,15 +33,20 @@ import java.util.List;
 public class Route implements Parcelable {
     @SerializedName("bounds")
     private Bound bound;
+    @SerializedName("copyrights")
     private String copyrights;
     @SerializedName("legs")
     private List<Leg> legList;
     @SerializedName("overview_polyline")
     private RoutePolyline overviewPolyline;
+    @SerializedName("summary")
     private String summary;
+    @SerializedName("fare")
     private Fare fare;
     @SerializedName("warnings")
     private List<String> warningList;
+    @SerializedName("waypoint_order")
+    private List<Integer> waypointOrderList;
 
     public Route() {
     }
@@ -49,6 +54,7 @@ public class Route implements Parcelable {
     protected Route(Parcel in) {
         bound = in.readParcelable(Bound.class.getClassLoader());
         copyrights = in.readString();
+        overviewPolyline = in.readParcelable(RoutePolyline.class.getClassLoader());
         summary = in.readString();
         fare = in.readParcelable(Fare.class.getClassLoader());
         warningList = in.createStringArrayList();
@@ -110,18 +116,27 @@ public class Route implements Parcelable {
         this.warningList = warningList;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeParcelable(bound, flags);
-        dest.writeString(copyrights);
-        dest.writeString(summary);
-        dest.writeParcelable(fare, flags);
-        dest.writeStringList(warningList);
+    public List<Integer> getWaypointOrderList() {
+        return waypointOrderList;
+    }
+
+    public void setWaypointOrderList(List<Integer> waypointOrderList) {
+        this.waypointOrderList = waypointOrderList;
     }
 
     @Override
     public int describeContents() {
         return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeParcelable(bound, i);
+        parcel.writeString(copyrights);
+        parcel.writeParcelable(overviewPolyline, i);
+        parcel.writeString(summary);
+        parcel.writeParcelable(fare, i);
+        parcel.writeStringList(warningList);
     }
 
     public static final Creator<Route> CREATOR = new Creator<Route>() {

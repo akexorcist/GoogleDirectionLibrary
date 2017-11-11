@@ -21,14 +21,19 @@ package com.akexorcist.googledirection.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by Akexorcist on 11/29/15 AD.
  */
 
 @SuppressWarnings("WeakerAccess")
 public class Fare implements Parcelable {
+    @SerializedName("currency")
     private String currency;
+    @SerializedName("value")
     private String value;
+    @SerializedName("text")
     private String text;
 
     public Fare() {

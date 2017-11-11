@@ -31,7 +31,9 @@ import com.google.gson.annotations.SerializedName;
 public class Vehicle implements Parcelable {
     @SerializedName("icon")
     private String iconUrl;
+    @SerializedName("name")
     private String name;
+    @SerializedName("type")
     private String type;
 
     public Vehicle() {

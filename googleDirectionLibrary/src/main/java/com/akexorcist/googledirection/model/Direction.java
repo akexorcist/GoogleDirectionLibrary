@@ -36,6 +36,7 @@ public class Direction implements Parcelable {
     private List<GeocodedWaypoint> geocodedWaypointList;
     @SerializedName("routes")
     private List<Route> routeList;
+    @SerializedName("status")
     private String status;
     @SerializedName("error_message")
     private String errorMessage;

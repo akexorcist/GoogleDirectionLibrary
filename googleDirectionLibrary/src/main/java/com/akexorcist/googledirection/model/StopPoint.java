@@ -21,13 +21,17 @@ package com.akexorcist.googledirection.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by Akexorcist on 11/29/15 AD.
  */
 
 @SuppressWarnings("WeakerAccess")
 public class StopPoint implements Parcelable {
+    @SerializedName("location")
     private Coordination location;
+    @SerializedName("name")
     private String name;
 
     public StopPoint() {
