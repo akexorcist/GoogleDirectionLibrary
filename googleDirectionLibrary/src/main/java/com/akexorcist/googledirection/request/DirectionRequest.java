@@ -36,8 +36,8 @@ import retrofit2.Response;
 public class DirectionRequest {
     private DirectionRequestParam param;
 
-    public DirectionRequest(String apiKey, LatLng origin, LatLng destination) {
-        param = new DirectionRequestParam().setApiKey(apiKey).setOrigin(origin).setDestination(destination);
+    public DirectionRequest(String apiKey, LatLng origin, LatLng destination, List<LatLng> waypointList) {
+        param = new DirectionRequestParam().setApiKey(apiKey).setOrigin(origin).setDestination(destination).setWaypoints(waypointList);
     }
 
     public DirectionRequest transportMode(String transportMode) {
@@ -86,11 +86,6 @@ public class DirectionRequest {
 
     public DirectionRequest departureTime(String time) {
         param.setDepartureTime(time);
-        return this;
-    }
-
-    public DirectionRequest waypoints(List<LatLng> waypoints) {
-        param.setWaypoints(waypoints);
         return this;
     }
 

@@ -26,7 +26,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -37,12 +36,10 @@ public class WaypointsDirectionActivity extends AppCompatActivity implements Vie
     private Button btnRequestDirection;
     private GoogleMap googleMap;
     private String serverKey = "YOUR_SERVER_KEY";
-    private LatLng origin = new LatLng(41.8838111, -87.6657851);
-    private LatLng destination = new LatLng(41.900689, -87.6487378);
-    private List<LatLng> waypoints = Arrays.asList(
-            new LatLng(41.8764273, -87.6555114),
-            new LatLng(41.8911366, -87.647443)
-    );
+    private LatLng park = new LatLng(41.8838111, -87.6657851);
+    private LatLng shopping = new LatLng(41.8766061, -87.6556908);
+    private LatLng dinner = new LatLng(41.8909056, -87.6467561);
+    private LatLng gallery = new LatLng(41.9007082, -87.6488802);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,10 +69,11 @@ public class WaypointsDirectionActivity extends AppCompatActivity implements Vie
         Snackbar.make(btnRequestDirection, "Direction Requesting...", Snackbar.LENGTH_SHORT).show();
         GoogleDirectionConfiguration.getInstance().setLogEnabled(true);
         GoogleDirection.withServerKey(serverKey)
-                .from(origin)
-                .to(destination)
+                .from(park)
+                .and(shopping)
+                .and(dinner)
+                .to(gallery)
                 .transportMode(TransportMode.DRIVING)
-                .waypoints(waypoints)
                 .execute(this);
     }
 

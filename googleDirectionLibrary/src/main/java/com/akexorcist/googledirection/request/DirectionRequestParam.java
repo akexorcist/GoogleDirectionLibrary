@@ -140,24 +140,27 @@ public class DirectionRequestParam implements Parcelable {
         return departureTime;
     }
 
-    public void setDepartureTime(String departureTime) {
+    public DirectionRequestParam setDepartureTime(String departureTime) {
         this.departureTime = departureTime;
+        return this;
     }
 
     public List<LatLng> getWaypoints() {
         return waypoints;
     }
 
-    public void setWaypoints(List<LatLng> waypoints) {
+    public DirectionRequestParam setWaypoints(List<LatLng> waypoints) {
         this.waypoints = waypoints;
+        return this;
     }
 
     public boolean isOptimizeWaypoints() {
         return optimizeWaypoints;
     }
 
-    public void setOptimizeWaypoints(boolean optimizeWaypoints) {
+    public DirectionRequestParam setOptimizeWaypoints(boolean optimizeWaypoints) {
         this.optimizeWaypoints = optimizeWaypoints;
+        return this;
     }
 
     @Override

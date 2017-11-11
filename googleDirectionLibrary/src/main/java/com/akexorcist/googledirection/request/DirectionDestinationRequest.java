@@ -20,19 +20,31 @@ package com.akexorcist.googledirection.request;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Akexorcist on 11/29/15 AD.
  */
 public class DirectionDestinationRequest {
     String apiKey;
     LatLng origin;
+    List<LatLng> waypointList;
 
     public DirectionDestinationRequest(String apiKey, LatLng origin) {
         this.apiKey = apiKey;
         this.origin = origin;
     }
 
+    public DirectionDestinationRequest and(LatLng waypoint) {
+        if (waypointList == null) {
+            waypointList = new ArrayList<>();
+        }
+        waypointList.add(waypoint);
+        return this;
+    }
+
     public DirectionRequest to(LatLng destination) {
-        return new DirectionRequest(apiKey, origin, destination);
+        return new DirectionRequest(apiKey, origin, destination, waypointList);
     }
 }
