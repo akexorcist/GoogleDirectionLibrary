@@ -13,28 +13,57 @@ Android library for Google Maps Direction API for using with Google Maps for And
 Sample Code
 ===============================
 
+Simple Direction Request
 ```java
 GoogleDirection.withServerKey("YOUR_SERVER_API_KEY")
         .from(new LatLng(37.7681994, -122.444538))
-		    .to(new LatLng(37.7749003,-122.4034934))
-		    .avoid(AvoidType.FERRIES)
-		    .avoid(AvoidType.HIGHWAYS)
-		    .execute(new DirectionCallback() {
-    @Override
-    public void onDirectionSuccess(Direction direction, String rawBody) {
-        if(direction.isOK()) {
-            // Do something
-        } else {
-            // Do something
-        }
-    }
+        .to(new LatLng(37.7749003,-122.4034934))
+        .avoid(AvoidType.FERRIES)
+        .avoid(AvoidType.HIGHWAYS)
+        .execute(new DirectionCallback() {
+            @Override
+            public void onDirectionSuccess(Direction direction, String rawBody) {
+                if(direction.isOK()) {
+                    // Do something
+                } else {
+                    // Do something
+                }
+            }
 
-    @Override
-    public void onDirectionFailure(Throwable t) {
-        // Do something
-    }
-});
+            @Override
+            public void onDirectionFailure(Throwable t) {
+                // Do something
+            }
+        });
 ```
+
+
+Multiple Waypoints Direction Request
+```java
+GoogleDirection.withServerKey("YOUR_SERVER_API_KEY")
+        .from(new LatLng(41.8838111, -87.6657851))
+        .and(new LatLng(41.8766061, -87.6556908))
+        .and(new LatLng(41.8909056, -87.6467561))
+        .to(new LatLng(41.9007082, -87.6488802))
+        .transportMode(TransportMode.DRIVING)
+        .execute(new DirectionCallback() {
+            @Override
+            public void onDirectionSuccess(Direction direction, String rawBody) {
+                if(direction.isOK()) {
+                    // Do something
+                } else {
+                    // Do something
+                }
+            }
+
+            @Override
+            public void onDirectionFailure(Throwable t) {
+                // Do something
+            }
+        });
+```
+
+See example code for more detail
 
 To get API key, please read [Get Google Maps Direction API Key](https://developers.google.com/maps/documentation/directions/get-api-key)
 
@@ -53,13 +82,13 @@ Maven
 <dependency>
   <groupId>com.akexorcist</groupId>
   <artifactId>googledirectionlibrary</artifactId>
-  <version>1.0.5</version>
+  <version>1.1.0</version>
 </dependency>
 ```
 
 Gradle
 ```
-compile 'com.akexorcist:googledirectionlibrary:1.0.5'
+compile 'com.akexorcist:googledirectionlibrary:1.1.0'
 ```
 
 Usage Documentation
@@ -72,9 +101,6 @@ Thai Version : http://www.akexorcist.com/2015/12/google-direction-library-for-an
 ProGuard
 ===========================
 ```
--keep class com.akexorcist.** { *; }
--keep interface com.akexorcist.* { *; }
-
 -keep class com.google.android.gms.maps.** { *; }
 -keep interface com.google.android.gms.maps.* { *; }
 
@@ -96,7 +122,7 @@ Special Thank
 
 Licence
 ===========================
-Copyright 2015 Akexorcist
+Copyright 2017 Akexorcist
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this work except in compliance with the License. You may obtain a copy of the License in the LICENSE file, or at:
 
