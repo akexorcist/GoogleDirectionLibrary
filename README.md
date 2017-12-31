@@ -63,6 +63,35 @@ GoogleDirection.withServerKey("YOUR_SERVER_API_KEY")
         });
 ```
 
+or 
+
+```java
+List<LatLng> waypoints = Arrays.asList(
+        new LatLng(41.8766061, -87.6556908), 
+        new LatLng(41.8909056, -87.6467561)
+)
+GoogleDirection.withServerKey("YOUR_SERVER_API_KEY")
+        .from(new LatLng(41.8838111, -87.6657851))
+        .and(waypoints)
+        .to(new LatLng(41.9007082, -87.6488802))
+        .transportMode(TransportMode.DRIVING)
+        .execute(new DirectionCallback() {
+            @Override
+            public void onDirectionSuccess(Direction direction, String rawBody) {
+                if(direction.isOK()) {
+                    // Do something
+                } else {
+                    // Do something
+                }
+            }
+
+            @Override
+            public void onDirectionFailure(Throwable t) {
+                // Do something
+            }
+        });
+```
+
 See example code for more detail
 
 To get API key, please read [Get Google Maps Direction API Key](https://developers.google.com/maps/documentation/directions/get-api-key)
@@ -82,13 +111,13 @@ Maven
 <dependency>
   <groupId>com.akexorcist</groupId>
   <artifactId>googledirectionlibrary</artifactId>
-  <version>1.1.0</version>
+  <version>1.1.1</version>
 </dependency>
 ```
 
 Gradle
 ```
-compile 'com.akexorcist:googledirectionlibrary:1.1.0'
+compile 'com.akexorcist:googledirectionlibrary:1.1.1'
 ```
 
 Usage Documentation
