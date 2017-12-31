@@ -27,9 +27,9 @@ import java.util.List;
  * Created by Akexorcist on 11/29/15 AD.
  */
 public class DirectionDestinationRequest {
-    String apiKey;
-    LatLng origin;
-    List<LatLng> waypointList;
+    private String apiKey;
+    private LatLng origin;
+    private List<LatLng> waypointList;
 
     public DirectionDestinationRequest(String apiKey, LatLng origin) {
         this.apiKey = apiKey;
@@ -41,6 +41,14 @@ public class DirectionDestinationRequest {
             waypointList = new ArrayList<>();
         }
         waypointList.add(waypoint);
+        return this;
+    }
+
+    public DirectionDestinationRequest and(List<LatLng> waypointList) {
+        if (this.waypointList == null) {
+            this.waypointList = new ArrayList<>();
+        }
+        this.waypointList.addAll(waypointList);
         return this;
     }
 
