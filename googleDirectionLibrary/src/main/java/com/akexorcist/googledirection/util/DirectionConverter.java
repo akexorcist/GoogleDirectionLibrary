@@ -50,7 +50,7 @@ public class DirectionConverter {
         if (step.getPolyline() != null) {
             List<LatLng> decodedPointList = step.getPolyline().getPointList();
             if (decodedPointList != null && decodedPointList.size() > 0) {
-                for (LatLng position : step.getPolyline().getPointList()) {
+                for (LatLng position : decodedPointList) {
                     directionPointList.add(position);
                 }
             }
@@ -71,35 +71,6 @@ public class DirectionConverter {
             }
         }
         return directionPointList;
-    }
-
-    public static List<LatLng> decodePoly(String encoded) {
-        ArrayList<LatLng> poly = new ArrayList<>();
-        int index = 0, len = encoded.length();
-        int lat = 0, lng = 0;
-        while (index < len) {
-            int b, shift = 0, result = 0;
-            do {
-                b = encoded.charAt(index++) - 63;
-                result |= (b & 0x1f) << shift;
-                shift += 5;
-            } while (b >= 0x20);
-            int dlat = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
-            lat += dlat;
-            shift = 0;
-            result = 0;
-            do {
-                b = encoded.charAt(index++) - 63;
-                result |= (b & 0x1f) << shift;
-                shift += 5;
-            } while (b >= 0x20);
-            int dlng = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
-            lng += dlng;
-
-            LatLng position = new LatLng((double) lat / 1E5, (double) lng / 1E5);
-            poly.add(position);
-        }
-        return poly;
     }
 
     public static PolylineOptions createPolyline(Context context, ArrayList<LatLng> locationList, int width, int color) {
@@ -128,6 +99,6 @@ public class DirectionConverter {
 
     private static int dpToPx(Context context, int dp) {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-        return Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
+        return Math.round(dp * (displayMetrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT));
     }
 }

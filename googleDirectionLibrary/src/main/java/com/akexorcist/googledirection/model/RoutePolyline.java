@@ -21,9 +21,9 @@ package com.akexorcist.googledirection.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.akexorcist.googledirection.util.DirectionConverter;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.annotations.SerializedName;
+import com.google.maps.android.PolyUtil;
 
 import java.util.List;
 
@@ -52,9 +52,8 @@ public class RoutePolyline implements Parcelable {
     }
 
     public List<LatLng> getPointList() {
-        return DirectionConverter.decodePoly(rawPointList);
+        return PolyUtil.decode(rawPointList);
     }
-
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
