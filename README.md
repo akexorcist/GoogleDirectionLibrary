@@ -117,7 +117,7 @@ Maven
 
 Gradle
 ```
-compile 'com.akexorcist:googledirectionlibrary:1.1.1'
+implementation 'com.akexorcist:googledirectionlibrary:1.1.1'
 ```
 
 Usage Documentation
