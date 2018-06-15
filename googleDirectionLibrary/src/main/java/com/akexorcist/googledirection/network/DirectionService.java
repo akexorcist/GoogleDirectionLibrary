@@ -21,6 +21,7 @@ package com.akexorcist.googledirection.network;
 import com.akexorcist.googledirection.constant.DirectionUrl;
 import com.akexorcist.googledirection.model.Direction;
 
+import io.reactivex.Single;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -42,4 +43,16 @@ public interface DirectionService {
                                  @Query("transit_mode") String transitMode,
                                  @Query("alternatives") boolean alternatives,
                                  @Query("key") String apiKey);
+    @GET(DirectionUrl.DIRECTION_API_URL)
+    Single<Direction> getDirectionRx(@Query("origin") String origin,
+                                     @Query("destination") String destination,
+                                     @Query("waypoints") String waypoints,
+                                     @Query("mode") String transportMode,
+                                     @Query("departure_time") String departureTime,
+                                     @Query("language") String language,
+                                     @Query("units") String units,
+                                     @Query("avoid") String avoid,
+                                     @Query("transit_mode") String transitMode,
+                                     @Query("alternatives") boolean alternatives,
+                                     @Query("key") String apiKey);
 }

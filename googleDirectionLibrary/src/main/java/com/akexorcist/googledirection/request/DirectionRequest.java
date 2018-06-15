@@ -26,6 +26,7 @@ import com.google.gson.Gson;
 
 import java.util.List;
 
+import io.reactivex.Single;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -123,6 +124,23 @@ public class DirectionRequest {
             }
         });
         return new DirectionTask(direction);
+    }
+
+    public Single<Direction> request() {
+        return DirectionConnection.getInstance()
+                .createService()
+                .getDirectionRx(param.getOrigin().latitude + "," + param.getOrigin().longitude,
+                        param.getDestination().latitude + "," + param.getDestination().longitude,
+                        waypointsToString(param.getWaypoints()),
+                        param.getTransportMode(),
+                        param.getDepartureTime(),
+                        param.getLanguage(),
+                        param.getUnit(),
+                        param.getAvoid(),
+                        param.getTransitMode(),
+                        param.isAlternatives(),
+                        param.getApiKey());
+
     }
 
     private String waypointsToString(List<LatLng> waypoints) {
