@@ -111,13 +111,13 @@ Maven
 <dependency>
   <groupId>com.pedromalta</groupId>
   <artifactId>googledirectionlibrary</artifactId>
-  <version>1.1.3</version>
+  <version>1.1.4</version>
 </dependency>
 ```
 
 Gradle
 ```
-implementation 'com.pedromalta:googledirectionlibrary:1.1.3'
+implementation 'com.pedromalta:googledirectionlibrary:1.1.4'
 ```
 
 Usage Documentation
