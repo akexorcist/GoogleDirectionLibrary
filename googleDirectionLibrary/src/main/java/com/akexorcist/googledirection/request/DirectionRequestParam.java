@@ -38,6 +38,7 @@ public class DirectionRequestParam implements Parcelable {
     private String unit;
     private String avoid;
     private String transitMode;
+    private String trafficModel;
     private boolean alternatives;
     private String apiKey;
     private List<LatLng> waypoints;
@@ -55,6 +56,7 @@ public class DirectionRequestParam implements Parcelable {
         unit = in.readString();
         avoid = in.readString();
         transitMode = in.readString();
+        trafficModel = in.readString();
         alternatives = in.readByte() != 0;
         apiKey = in.readString();
         waypoints = in.createTypedArrayList(LatLng.CREATOR);
@@ -77,6 +79,14 @@ public class DirectionRequestParam implements Parcelable {
     public DirectionRequestParam setDestination(LatLng destination) {
         this.destination = destination;
         return this;
+    }
+
+    public String getTrafficModel() {
+        return trafficModel;
+    }
+
+    public void setTrafficModel(String trafficModel) {
+        this.trafficModel = trafficModel;
     }
 
     public String getTransportMode() {
@@ -173,6 +183,7 @@ public class DirectionRequestParam implements Parcelable {
         dest.writeString(unit);
         dest.writeString(avoid);
         dest.writeString(transitMode);
+        dest.writeString(trafficModel);
         dest.writeByte((byte) (alternatives ? 1 : 0));
         dest.writeString(apiKey);
         dest.writeTypedList(waypoints);

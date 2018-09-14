@@ -46,6 +46,11 @@ public class DirectionRequest {
         return this;
     }
 
+    public DirectionRequest trafficModel(String trafficModel) {
+        param.setTrafficModel(trafficModel);
+        return this;
+    }
+
     public DirectionRequest language(String language) {
         param.setLanguage(language);
         return this;
@@ -107,6 +112,7 @@ public class DirectionRequest {
                         param.getUnit(),
                         param.getAvoid(),
                         param.getTransitMode(),
+                        param.getTrafficModel(),
                         param.isAlternatives(),
                         param.getApiKey());
 
@@ -138,6 +144,7 @@ public class DirectionRequest {
                         param.getUnit(),
                         param.getAvoid(),
                         param.getTransitMode(),
+                        param.getTrafficModel(),
                         param.isAlternatives(),
                         param.getApiKey());
 

@@ -41,6 +41,7 @@ public interface DirectionService {
                                  @Query("units") String units,
                                  @Query("avoid") String avoid,
                                  @Query("transit_mode") String transitMode,
+                                 @Query("traffic_model") String trafficModel,
                                  @Query("alternatives") boolean alternatives,
                                  @Query("key") String apiKey);
     @GET(DirectionUrl.DIRECTION_API_URL)
@@ -53,6 +54,7 @@ public interface DirectionService {
                                      @Query("units") String units,
                                      @Query("avoid") String avoid,
                                      @Query("transit_mode") String transitMode,
+                                     @Query("traffic_model") String trafficModel,
                                      @Query("alternatives") boolean alternatives,
                                      @Query("key") String apiKey);
 }
