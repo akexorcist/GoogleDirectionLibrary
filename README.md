@@ -109,15 +109,15 @@ Download
 Maven
 ```
 <dependency>
-  <groupId>com.akexorcist</groupId>
+  <groupId>com.pedromalta</groupId>
   <artifactId>googledirectionlibrary</artifactId>
-  <version>1.1.1</version>
+  <version>1.1.3</version>
 </dependency>
 ```
 
 Gradle
 ```
-implementation 'com.akexorcist:googledirectionlibrary:1.1.1'
+implementation 'com.pedromalta:googledirectionlibrary:1.1.3'
 ```
 
 Usage Documentation
