@@ -35,8 +35,6 @@ public class Step implements Parcelable {
     private Info distance;
     @SerializedName("duration")
     private Info duration;
-    @SerializedName("duration_in_traffic")
-    private Info durationInTraffic;
     @SerializedName("end_location")
     private Coordination endLocation;
     @SerializedName("html_instructions")
@@ -60,7 +58,6 @@ public class Step implements Parcelable {
     protected Step(Parcel in) {
         distance = in.readParcelable(Info.class.getClassLoader());
         duration = in.readParcelable(Info.class.getClassLoader());
-        durationInTraffic = in.readParcelable(Info.class.getClassLoader());
         endLocation = in.readParcelable(Coordination.class.getClassLoader());
         htmlInstruction = in.readString();
         maneuver = in.readString();
@@ -82,14 +79,6 @@ public class Step implements Parcelable {
     }
 
     public void setDuration(Info duration) {
-        this.duration = duration;
-    }
-
-    public Info getDurationInTraffic() {
-        return duration;
-    }
-
-    public void setDurationInTraffic(Info duration) {
         this.duration = duration;
     }
 
@@ -167,7 +156,6 @@ public class Step implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeParcelable(distance, flags);
         dest.writeParcelable(duration, flags);
-        dest.writeParcelable(durationInTraffic, flags);
         dest.writeParcelable(endLocation, flags);
         dest.writeString(htmlInstruction);
         dest.writeString(maneuver);
