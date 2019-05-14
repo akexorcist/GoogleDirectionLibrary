@@ -20,10 +20,10 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(':googleDirectionLibrary')
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:27.0.0'
-    compile 'com.android.support:design:27.0.0'
-    compile 'com.google.android.gms:play-services-maps:11.6.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':googleDirectionLibrary')
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.google.android.gms:play-services-maps:16.1.0'
 }
