@@ -20,7 +20,8 @@ package com.akexorcist.googledirection.request;
 
 import com.akexorcist.googledirection.DirectionCallback;
 import com.akexorcist.googledirection.model.Direction;
-import com.akexorcist.googledirection.network.DirectionConnection;
+import com.akexorcist.googledirection.model.Geocode;
+import com.akexorcist.googledirection.network.Connection;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
 
@@ -100,9 +101,9 @@ public class DirectionRequest {
         return this;
     }
 
-    public DirectionTask execute(final DirectionCallback callback) {
-        Call<Direction> direction = DirectionConnection.getInstance()
-                .createService()
+    public Task<Direction> execute(final DirectionCallback callback) {
+        Call<Direction> direction = Connection.getInstance()
+                .createDirectionService()
                 .getDirection(param.getOrigin().latitude + "," + param.getOrigin().longitude,
                         param.getDestination().latitude + "," + param.getDestination().longitude,
                         waypointsToString(param.getWaypoints()),
@@ -129,12 +130,12 @@ public class DirectionRequest {
                 callback.onDirectionFailure(t);
             }
         });
-        return new DirectionTask(direction);
+        return new Task<>(direction);
     }
 
     public Single<Direction> request() {
-        return DirectionConnection.getInstance()
-                .createService()
+        return Connection.getInstance()
+                .createDirectionService()
                 .getDirectionRx(param.getOrigin().latitude + "," + param.getOrigin().longitude,
                         param.getDestination().latitude + "," + param.getDestination().longitude,
                         waypointsToString(param.getWaypoints()),

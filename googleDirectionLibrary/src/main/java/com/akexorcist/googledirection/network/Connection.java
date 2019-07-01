@@ -19,10 +19,9 @@ limitations under the License.
 package com.akexorcist.googledirection.network;
 
 import com.akexorcist.googledirection.config.GoogleDirectionConfiguration;
-import com.akexorcist.googledirection.constant.DirectionUrl;
+import com.akexorcist.googledirection.constant.ApiUrl;
 
 import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -30,29 +29,44 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * Created by Akexorcist on 11/29/15 AD.
  */
-public class DirectionConnection {
-    private static DirectionConnection connection;
+public class Connection {
+    private static Connection connection;
 
-    public static DirectionConnection getInstance() {
+    public static Connection getInstance() {
         if (connection == null) {
-            connection = new DirectionConnection();
+            connection = new Connection();
         }
         return connection;
     }
 
-    private DirectionService service;
+    private DirectionService directionService;
+    private GeocodeService geocodeService;
+    private Retrofit retrofit;
 
-    public DirectionService createService() {
-        if (service == null) {
-            Retrofit retrofit = new Retrofit.Builder()
+    private Retrofit createRetrofit(){
+        if (retrofit == null) {
+            retrofit = new Retrofit.Builder()
                     .client(getClient())
-                    .baseUrl(DirectionUrl.MAPS_API_URL)
+                    .baseUrl(ApiUrl.MAPS_API_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();
-            service = retrofit.create(DirectionService.class);
         }
-        return service;
+        return retrofit;
+    }
+
+    public DirectionService createDirectionService() {
+        if (directionService == null) {
+            directionService = createRetrofit().create(DirectionService.class);
+        }
+        return directionService;
+    }
+
+    public GeocodeService createGeocodeService() {
+        if (geocodeService == null) {
+            geocodeService = createRetrofit().create(GeocodeService.class);
+        }
+        return geocodeService;
     }
 
     private OkHttpClient getClient() {
@@ -65,11 +79,6 @@ public class DirectionConnection {
 
     private OkHttpClient createDefaultClient() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        if (GoogleDirectionConfiguration.getInstance().isLogEnabled()) {
-            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-            builder.addInterceptor(interceptor);
-        }
         return builder.build();
     }
 }

@@ -18,7 +18,7 @@ limitations under the License.
 
 package com.akexorcist.googledirection.network;
 
-import com.akexorcist.googledirection.constant.DirectionUrl;
+import com.akexorcist.googledirection.constant.ApiUrl;
 import com.akexorcist.googledirection.model.Direction;
 
 import io.reactivex.Single;
@@ -31,7 +31,7 @@ import retrofit2.http.Query;
  */
 public interface DirectionService {
 
-    @GET(DirectionUrl.DIRECTION_API_URL)
+    @GET(ApiUrl.DIRECTION_API_URL)
     Call<Direction> getDirection(@Query("origin") String origin,
                                  @Query("destination") String destination,
                                  @Query("waypoints") String waypoints,
@@ -44,7 +44,7 @@ public interface DirectionService {
                                  @Query("traffic_model") String trafficModel,
                                  @Query("alternatives") boolean alternatives,
                                  @Query("key") String apiKey);
-    @GET(DirectionUrl.DIRECTION_API_URL)
+    @GET(ApiUrl.DIRECTION_API_URL)
     Single<Direction> getDirectionRx(@Query("origin") String origin,
                                      @Query("destination") String destination,
                                      @Query("waypoints") String waypoints,
