@@ -46,7 +46,7 @@ public class Route implements Parcelable {
     @SerializedName("warnings")
     private List<String> warningList;
     @SerializedName("waypoint_order")
-    private List<Integer> waypointOrderList;
+    private List<Long> waypointOrderList;
 
     public Route() {
     }
@@ -116,11 +116,11 @@ public class Route implements Parcelable {
         this.warningList = warningList;
     }
 
-    public List<Integer> getWaypointOrderList() {
+    public List<Long> getWaypointOrderList() {
         return waypointOrderList;
     }
 
-    public void setWaypointOrderList(List<Integer> waypointOrderList) {
+    public void setWaypointOrderList(List<Long> waypointOrderList) {
         this.waypointOrderList = waypointOrderList;
     }
 
