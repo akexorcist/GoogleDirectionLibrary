@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 buildscript {
     repositories {
@@ -28,22 +30,29 @@ android {
             java.srcDirs = ['src/main/java']
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.squareup.retrofit2:retrofit:2.3.0'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.9.0'
-    compile('com.squareup.retrofit2:converter-gson:2.3.0') {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.squareup.retrofit2:retrofit:2.6.2'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.14.2'
+    implementation('com.squareup.retrofit2:converter-gson:2.3.0') {
         exclude module: 'retrofit'
     }
-    compile('com.google.android.gms:play-services-maps:11.6.0') {
+    implementation('com.google.android.gms:play-services-maps:11.6.0') {
         exclude module: 'support-annotations'
         exclude module: 'support-v4'
         exclude module: 'play-services-base'
     }
-    compile 'com.google.maps.android:android-maps-utils:0.5'
+    implementation 'com.google.maps.android:android-maps-utils:0.5'
 }
 
 apply from: '../maven_push.gradle'
