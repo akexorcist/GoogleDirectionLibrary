@@ -32,14 +32,14 @@ public class Info implements Parcelable {
     @SerializedName("text")
     private String text;
     @SerializedName("value")
-    private String value;
+    private Long value;
 
     public Info() {
     }
 
     protected Info(Parcel in) {
         text = in.readString();
-        value = in.readString();
+        value = in.readLong();
     }
 
     public String getText() {
@@ -50,18 +50,18 @@ public class Info implements Parcelable {
         this.text = text;
     }
 
-    public String getValue() {
+    public Long getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(Long value) {
         this.value = value;
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(text);
-        dest.writeString(value);
+        dest.writeLong(value);
     }
 
     @Override

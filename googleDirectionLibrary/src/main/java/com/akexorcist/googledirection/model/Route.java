@@ -124,6 +124,34 @@ public class Route implements Parcelable {
         this.waypointOrderList = waypointOrderList;
     }
 
+    /**
+     * Get the total duration in meters
+     */
+    public Long getTotalDistance() {
+        if (legList == null || legList.size() == 0) {
+            return 0L;
+        }
+        Long totalDistance = 0L;
+        for (Leg leg : legList) {
+            totalDistance += leg.getDistance().getValue();
+        }
+        return totalDistance;
+    }
+
+    /**
+     * Get the total duration in seconds
+     */
+    public Long getTotalDuration() {
+        if (legList == null || legList.size() == 0) {
+            return 0L;
+        }
+        Long totalDuration = 0L;
+        for (Leg leg : legList) {
+            totalDuration += leg.getDuration().getValue();
+        }
+        return totalDuration;
+    }
+
     @Override
     public int describeContents() {
         return 0;
