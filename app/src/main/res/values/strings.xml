@@ -5,4 +5,6 @@
     <string name="alternative_direction">Alternative Direction</string>
     <string name="waypoints_direction">Waypoints Direction</string>
     <string name="request_direction">Request Direction</string>
+    <string name="success_with_status">Success with status : %1$s</string>
+    <string name="direction_requesting">Direction Requesting...</string>
 </resources>

@@ -12,25 +12,25 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/btn_simple"
+            android:id="@+id/buttonSimple"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/simple_direction" />
 
         <Button
-            android:id="@+id/btn_transit"
+            android:id="@+id/buttonTransit"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/transit_direction" />
 
         <Button
-            android:id="@+id/btn_alternative"
+            android:id="@+id/buttonAlternative"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/alternative_direction" />
 
         <Button
-            android:id="@+id/btn_waypoints"
+            android:id="@+id/buttonWaypoints"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/waypoints_direction" />
