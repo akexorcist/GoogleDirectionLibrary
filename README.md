@@ -12,13 +12,21 @@ Android library for Google Maps Direction API for using with Google Maps for And
 What's new in 1.2.0
 ===============================
 • Update minimum SDK version to 16
+
 • Update target and compile SDK version 29
+
 • Migrate to AndroidX
+
 • Migrate the sample code to Kotlin
+
 • Add total distance and duration calculation in route
+
 • Remove raw string from success callback
+
 • Add more customizable polyline in DirectionConverter
+
 • Fix issue #70
+
 
 Sample Code
 ===============================
