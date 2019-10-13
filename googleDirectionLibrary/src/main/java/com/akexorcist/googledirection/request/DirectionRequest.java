@@ -22,7 +22,6 @@ import com.akexorcist.googledirection.DirectionCallback;
 import com.akexorcist.googledirection.model.Direction;
 import com.akexorcist.googledirection.network.DirectionConnection;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -113,7 +112,7 @@ public class DirectionRequest {
             @Override
             public void onResponse(Call<Direction> call, Response<Direction> response) {
                 if (callback != null) {
-                    callback.onDirectionSuccess(response.body(), new Gson().toJson(response.body()));
+                    callback.onDirectionSuccess(response.body());
                 }
             }
 

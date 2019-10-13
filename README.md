@@ -22,7 +22,7 @@ GoogleDirection.withServerKey("YOUR_SERVER_API_KEY")
         .avoid(AvoidType.HIGHWAYS)
         .execute(new DirectionCallback() {
             @Override
-            public void onDirectionSuccess(Direction direction, String rawBody) {
+            public void onDirectionSuccess(Direction direction) {
                 if(direction.isOK()) {
                     // Do something
                 } else {
@@ -48,7 +48,7 @@ GoogleDirection.withServerKey("YOUR_SERVER_API_KEY")
         .transportMode(TransportMode.DRIVING)
         .execute(new DirectionCallback() {
             @Override
-            public void onDirectionSuccess(Direction direction, String rawBody) {
+            public void onDirectionSuccess(Direction direction) {
                 if(direction.isOK()) {
                     // Do something
                 } else {
@@ -77,7 +77,7 @@ GoogleDirection.withServerKey("YOUR_SERVER_API_KEY")
         .transportMode(TransportMode.DRIVING)
         .execute(new DirectionCallback() {
             @Override
-            public void onDirectionSuccess(Direction direction, String rawBody) {
+            public void onDirectionSuccess(Direction direction) {
                 if(direction.isOK()) {
                     // Do something
                 } else {

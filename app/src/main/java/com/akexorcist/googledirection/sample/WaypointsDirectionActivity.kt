@@ -52,7 +52,7 @@ class WaypointsDirectionActivity : AppCompatActivity() {
             .to(gallery)
             .transportMode(TransportMode.DRIVING)
             .execute(
-                onDirectionSuccess = { direction, _ -> onDirectionSuccess(direction) },
+                onDirectionSuccess = { direction -> onDirectionSuccess(direction) },
                 onDirectionFailure = { t -> onDirectionFailure(t) }
             )
     }

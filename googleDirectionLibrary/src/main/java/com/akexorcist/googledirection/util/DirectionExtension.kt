@@ -6,11 +6,11 @@ import com.akexorcist.googledirection.request.DirectionRequest
 import com.akexorcist.googledirection.request.DirectionTask
 
 fun DirectionRequest.execute(
-    onDirectionSuccess: ((Direction, String) -> Unit)? = null,
+    onDirectionSuccess: ((Direction) -> Unit)? = null,
     onDirectionFailure: ((Throwable) -> Unit)? = null
 ): DirectionTask = execute(object : DirectionCallback {
-    override fun onDirectionSuccess(direction: Direction, rawBody: String) {
-        onDirectionSuccess?.invoke(direction, rawBody)
+    override fun onDirectionSuccess(direction: Direction) {
+        onDirectionSuccess?.invoke(direction)
     }
 
     override fun onDirectionFailure(t: Throwable) {

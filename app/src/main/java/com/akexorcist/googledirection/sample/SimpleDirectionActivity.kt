@@ -48,7 +48,7 @@ class SimpleDirectionActivity : AppCompatActivity() {
             .to(destination)
             .transportMode(TransportMode.DRIVING)
             .execute(
-                onDirectionSuccess = { direction, _ -> onDirectionSuccess(direction) },
+                onDirectionSuccess = { direction -> onDirectionSuccess(direction) },
                 onDirectionFailure = { t -> onDirectionFailure(t) }
             )
     }
