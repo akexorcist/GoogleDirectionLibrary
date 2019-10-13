@@ -7,6 +7,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 
 import com.akexorcist.googledirection.GoogleDirection
+import com.akexorcist.googledirection.config.GoogleDirectionConfiguration
 import com.akexorcist.googledirection.constant.TransportMode
 import com.akexorcist.googledirection.model.Direction
 import com.akexorcist.googledirection.model.Route
@@ -43,6 +44,7 @@ class TransitDirectionActivity : AppCompatActivity() {
 
     private fun requestDirection() {
         showSnackbar(getString(R.string.direction_requesting))
+        GoogleDirectionConfiguration.getInstance().isLogEnabled = BuildConfig.DEBUG
         GoogleDirection.withServerKey(serverKey)
             .from(origin)
             .to(destination)

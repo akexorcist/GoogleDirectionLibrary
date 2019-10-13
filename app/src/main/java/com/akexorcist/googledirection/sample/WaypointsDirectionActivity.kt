@@ -44,7 +44,7 @@ class WaypointsDirectionActivity : AppCompatActivity() {
 
     private fun requestDirection() {
         showSnackbar(getString(R.string.direction_requesting))
-        GoogleDirectionConfiguration.getInstance().isLogEnabled = true
+        GoogleDirectionConfiguration.getInstance().isLogEnabled = BuildConfig.DEBUG
         GoogleDirection.withServerKey(serverKey)
             .from(park)
             .and(shopping)
