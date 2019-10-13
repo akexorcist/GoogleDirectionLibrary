@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'org.jetbrains.dokka-android'
 
 buildscript {
     repositories {
@@ -39,6 +40,11 @@ android {
     }
 }
 
+dokka {
+    outputFormat = 'html'
+    outputDirectory = "$buildDir/javadoc"
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
@@ -56,4 +62,29 @@ dependencies {
     implementation 'com.google.maps.android:android-maps-utils:0.5'
 }
 
-apply from: '../maven_push.gradle'
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'google-direction-library'
+
+    publishedGroupId = 'com.akexorcist'
+    libraryName = 'Google Direction Library'
+    artifact = 'google-direction-library'
+
+    libraryDescription = 'Google Direction API for Android'
+
+    siteUrl = 'https://github.com/akexorcist/Android-GoogleDirectionLibrary'
+    gitUrl = 'https://github.com/akexorcist/Android-GoogleDirectionLibrary.git'
+
+    libraryVersion = VERSION_NAME
+
+    developerId = 'akexorcist'
+    developerName = 'Somkiat Khitwongwattana'
+    developerEmail = 'akexorcist@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+apply from: '../publish/installv1.gradle'
+apply from: '../publish/bintrayv1.gradle'

@@ -120,14 +120,14 @@ Maven
 ```
 <dependency>
   <groupId>com.akexorcist</groupId>
-  <artifactId>googledirectionlibrary</artifactId>
+  <artifactId>google-direction-library</artifactId>
   <version>1.2.0</version>
 </dependency>
 ```
 
 Gradle
 ```
-implementation 'com.akexorcist:googledirectionlibrary:1.2.0'
+implementation 'com.akexorcist:google-direction-library:1.2.0'
 ```
 
 Usage Documentation
