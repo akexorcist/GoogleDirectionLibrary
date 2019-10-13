@@ -9,6 +9,16 @@ Android library for Google Maps Direction API for using with Google Maps for And
 
 ![Google Direction Library](https://raw.githubusercontent.com/akexorcist/Android-GoogleDirectionLibrary/master/image/google-direction-library_02.jpg)
 
+What's new in 1.2.0
+===============================
+• Update minimum SDK version to 16
+• Update target and compile SDK version 29
+• Migrate to AndroidX
+• Migrate the sample code to Kotlin
+• Add total distance and duration calculation in route
+• Remove raw string from success callback
+• Add more customizable polyline in DirectionConverter
+• Fix issue #70
 
 Sample Code
 ===============================
@@ -111,13 +121,13 @@ Maven
 <dependency>
   <groupId>com.akexorcist</groupId>
   <artifactId>googledirectionlibrary</artifactId>
-  <version>1.1.1</version>
+  <version>1.2.0</version>
 </dependency>
 ```
 
 Gradle
 ```
-implementation 'com.akexorcist:googledirectionlibrary:1.1.1'
+implementation 'com.akexorcist:googledirectionlibrary:1.2.0'
 ```
 
 Usage Documentation
