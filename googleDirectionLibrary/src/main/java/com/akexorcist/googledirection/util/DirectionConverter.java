@@ -23,7 +23,6 @@ import android.util.DisplayMetrics;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.Dimension;
-import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -36,8 +35,6 @@ import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static androidx.annotation.Dimension.DP;
 
 /**
  * Created by Akexorcist on 11/29/15 AD.
@@ -102,7 +99,7 @@ public class DirectionConverter {
     public static PolylineOptions createPolyline(
             @NonNull Context context,
             @Nullable ArrayList<LatLng> locationList,
-            @Dimension(unit = DP) int width,
+            @Dimension(unit = Dimension.DP) int width,
             @ColorInt int color
     ) {
         return createPolyline(
@@ -121,7 +118,7 @@ public class DirectionConverter {
     public static PolylineOptions createPolyline(
             @NonNull Context context,
             @Nullable ArrayList<LatLng> locationList,
-            @Dimension(unit = DP) int width,
+            @Dimension(unit = Dimension.DP) int width,
             @ColorInt int color,
             boolean clickable
     ) {
@@ -141,10 +138,10 @@ public class DirectionConverter {
     public static PolylineOptions createPolyline(
             @NonNull Context context,
             @Nullable ArrayList<LatLng> locationList,
-            @Dimension(unit = DP) int width,
+            @Dimension(unit = Dimension.DP) int width,
             @ColorInt int color,
             boolean clickable,
-            @IntRange(from = JointType.DEFAULT, to = JointType.ROUND) int jointType
+            int jointType
     ) {
         return createPolyline(
                 context,
@@ -162,7 +159,7 @@ public class DirectionConverter {
     public static PolylineOptions createPolyline(
             @NonNull Context context,
             @Nullable ArrayList<LatLng> locationList,
-            @Dimension(unit = DP) int width,
+            @Dimension(unit = Dimension.DP) int width,
             @ColorInt int color,
             boolean clickable,
             @Nullable Cap startCap,
@@ -184,7 +181,7 @@ public class DirectionConverter {
     public static PolylineOptions createPolyline(
             @NonNull Context context,
             @Nullable ArrayList<LatLng> locationList,
-            @Dimension(unit = DP) int width,
+            @Dimension(unit = Dimension.DP) int width,
             @ColorInt int color,
             boolean clickable,
             @Nullable List<PatternItem> patternItemList
@@ -205,10 +202,10 @@ public class DirectionConverter {
     public static PolylineOptions createPolyline(
             @NonNull Context context,
             @Nullable ArrayList<LatLng> locationList,
-            @Dimension(unit = DP) int width,
+            @Dimension(unit = Dimension.DP) int width,
             @ColorInt int color,
             boolean clickable,
-            @IntRange(from = JointType.DEFAULT, to = JointType.ROUND) int jointType,
+            int jointType,
             @Nullable Cap startCap,
             @Nullable Cap endCap,
             @Nullable List<PatternItem> patternItemList) {
@@ -254,9 +251,9 @@ public class DirectionConverter {
     public static ArrayList<PolylineOptions> createTransitPolyline(
             @NonNull Context context,
             @Nullable List<Step> stepList,
-            @Dimension(unit = DP) int transitWidth,
+            @Dimension(unit = Dimension.DP) int transitWidth,
             @ColorInt int transitColor,
-            @Dimension(unit = DP) int walkingWidth,
+            @Dimension(unit = Dimension.DP) int walkingWidth,
             @ColorInt int walkingColor) {
         return createTransitPolyline(
                 context,
@@ -277,10 +274,10 @@ public class DirectionConverter {
     public static ArrayList<PolylineOptions> createTransitPolyline(
             @NonNull Context context,
             @Nullable List<Step> stepList,
-            @Dimension(unit = DP) int transitWidth,
+            @Dimension(unit = Dimension.DP) int transitWidth,
             @Nullable List<PatternItem> transitPatternItemList,
             @ColorInt int transitColor,
-            @Dimension(unit = DP) int walkingWidth,
+            @Dimension(unit = Dimension.DP) int walkingWidth,
             @ColorInt int walkingColor,
             @Nullable List<PatternItem> walkingPatternItemList) {
         return createTransitPolyline(
@@ -302,11 +299,11 @@ public class DirectionConverter {
     public static ArrayList<PolylineOptions> createTransitPolyline(
             @NonNull Context context,
             @Nullable List<Step> stepList,
-            @Dimension(unit = DP) int transitWidth,
+            @Dimension(unit = Dimension.DP) int transitWidth,
             @ColorInt int transitColor,
-            @Dimension(unit = DP) int walkingWidth,
+            @Dimension(unit = Dimension.DP) int walkingWidth,
             @ColorInt int walkingColor,
-            @Nullable boolean clickable) {
+            boolean clickable) {
         return createTransitPolyline(
                 context,
                 stepList,
@@ -326,12 +323,12 @@ public class DirectionConverter {
     public static ArrayList<PolylineOptions> createTransitPolyline(
             @NonNull Context context,
             @Nullable List<Step> stepList,
-            @Dimension(unit = DP) int transitWidth,
+            @Dimension(unit = Dimension.DP) int transitWidth,
             @ColorInt int transitColor,
-            @Dimension(unit = DP) int walkingWidth,
+            @Dimension(unit = Dimension.DP) int walkingWidth,
             @ColorInt int walkingColor,
             boolean clickable,
-            @IntRange(from = JointType.DEFAULT, to = JointType.ROUND) int jointType) {
+            int jointType) {
         return createTransitPolyline(
                 context,
                 stepList,
@@ -351,9 +348,9 @@ public class DirectionConverter {
     public static ArrayList<PolylineOptions> createTransitPolyline(
             @NonNull Context context,
             @Nullable List<Step> stepList,
-            @Dimension(unit = DP) int transitWidth,
+            @Dimension(unit = Dimension.DP) int transitWidth,
             @ColorInt int transitColor,
-            @Dimension(unit = DP) int walkingWidth,
+            @Dimension(unit = Dimension.DP) int walkingWidth,
             @ColorInt int walkingColor,
             boolean clickable,
             @Nullable Cap startCap,
@@ -377,14 +374,14 @@ public class DirectionConverter {
     public static ArrayList<PolylineOptions> createTransitPolyline(
             @NonNull Context context,
             @Nullable List<Step> stepList,
-            @Dimension(unit = DP) int transitWidth,
+            @Dimension(unit = Dimension.DP) int transitWidth,
             @ColorInt int transitColor,
             @Nullable List<PatternItem> transitPatternItemList,
-            @Dimension(unit = DP) int walkingWidth,
+            @Dimension(unit = Dimension.DP) int walkingWidth,
             @ColorInt int walkingColor,
             @Nullable List<PatternItem> walkingPatternItemList,
             boolean clickable,
-            @IntRange(from = JointType.DEFAULT, to = JointType.ROUND) int jointType,
+            int jointType,
             @Nullable Cap startCap,
             @Nullable Cap endCap
     ) {
@@ -451,7 +448,7 @@ public class DirectionConverter {
             return width;
         }
 
-        public PathOption setWidth(@Dimension(unit = DP) int width) {
+        public PathOption setWidth(@Dimension(unit = Dimension.DP) int width) {
             this.width = width;
             return this;
         }
@@ -478,7 +475,7 @@ public class DirectionConverter {
             return jointType;
         }
 
-        public PathOption setJointType(@IntRange(from = JointType.DEFAULT, to = JointType.ROUND) int jointType) {
+        public PathOption setJointType(int jointType) {
             this.jointType = jointType;
             return this;
         }
@@ -537,7 +534,7 @@ public class DirectionConverter {
             return transitWidth;
         }
 
-        public TransitPathOption setTransitWidth(@Dimension(unit = DP) int transitWidth) {
+        public TransitPathOption setTransitWidth(@Dimension(unit = Dimension.DP) int transitWidth) {
             this.transitWidth = transitWidth;
             return this;
         }
@@ -565,7 +562,7 @@ public class DirectionConverter {
             return walkingWidth;
         }
 
-        public TransitPathOption setWalkingWidth(@Dimension(unit = DP) int walkingWidth) {
+        public TransitPathOption setWalkingWidth(@Dimension(unit = Dimension.DP) int walkingWidth) {
             this.walkingWidth = walkingWidth;
             return this;
         }
@@ -602,7 +599,7 @@ public class DirectionConverter {
             return jointType;
         }
 
-        public TransitPathOption setJointType(@IntRange(from = JointType.DEFAULT, to = JointType.ROUND) int jointType) {
+        public TransitPathOption setJointType(int jointType) {
             this.jointType = jointType;
             return this;
         }
