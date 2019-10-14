@@ -36,10 +36,20 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
- * Created by Akexorcist on 11/29/15 AD.
+ * Utility class for value convert in the Google Direction Library.
+ *
+ * @since 1.0.0
  */
 public class DirectionConverter {
+    /**
+     * Convert the route paths to list of latitude and longitude.
+     *
+     * @param stepList The list of steps.
+     * @return The list of latitude and longitude that converted from the list of steps.
+     * @since 1.0.0
+     */
     public static ArrayList<LatLng> getDirectionPoint(List<Step> stepList) {
         ArrayList<LatLng> directionPointList = new ArrayList<>();
         if (stepList != null && stepList.size() > 0) {
@@ -50,6 +60,9 @@ public class DirectionConverter {
         return directionPointList;
     }
 
+    /**
+     * For internal use.
+     */
     private static void convertStepToPosition(Step step, ArrayList<LatLng> directionPointList) {
         // Get start location
         directionPointList.add(step.getStartLocation().getCoordination());
@@ -66,6 +79,13 @@ public class DirectionConverter {
         directionPointList.add(step.getEndLocation().getCoordination());
     }
 
+    /**
+     * Convert the position of each step to list of latitude and longitude.
+     *
+     * @param stepList The list of steps.
+     * @return The list of latitude and longitude that converted from the list of steps.
+     * @since 1.0.0
+     */
     public static ArrayList<LatLng> getSectionPoint(List<Step> stepList) {
         ArrayList<LatLng> directionPointList = new ArrayList<>();
         if (stepList != null && stepList.size() > 0) {
@@ -79,6 +99,14 @@ public class DirectionConverter {
         return directionPointList;
     }
 
+    /**
+     * Convert the path option to the polyline options.
+     *
+     * @param context    A context.
+     * @param pathOption Path options of the steps.
+     * @return Options for a polyline.
+     * @since 1.2.0
+     */
     public static PolylineOptions createPolyline(
             @NonNull Context context,
             @NonNull PathOption pathOption
@@ -96,6 +124,16 @@ public class DirectionConverter {
         );
     }
 
+    /**
+     * Convert the list of latitude and longitude to the polyline options.
+     *
+     * @param context      A context.
+     * @param locationList A list of latitude and longitude.
+     * @param width        Width of the polyline in screen pixels.
+     * @param color        Color of the polyline as a 32-bit ARGB color.
+     * @return Options for a polyline.
+     * @since 1.0.0
+     */
     public static PolylineOptions createPolyline(
             @NonNull Context context,
             @Nullable ArrayList<LatLng> locationList,
@@ -115,6 +153,17 @@ public class DirectionConverter {
         );
     }
 
+    /**
+     * Convert the list of latitude and longitude to the polyline options.
+     *
+     * @param context      A context.
+     * @param locationList A list of latitude and longitude.
+     * @param width        Width of the polyline in screen pixels.
+     * @param color        Color of the polyline as a 32-bit ARGB color.
+     * @param clickable    Is polyline clickable.
+     * @return Options for a polyline.
+     * @since 1.2.0
+     */
     public static PolylineOptions createPolyline(
             @NonNull Context context,
             @Nullable ArrayList<LatLng> locationList,
@@ -135,6 +184,18 @@ public class DirectionConverter {
         );
     }
 
+    /**
+     * Convert the list of latitude and longitude to the polyline options.
+     *
+     * @param context      A context.
+     * @param locationList A list of latitude and longitude.
+     * @param width        Width of the polyline in screen pixels.
+     * @param color        Color of the polyline as a 32-bit ARGB color.
+     * @param clickable    Is polyline clickable.
+     * @param jointType    Joint type for all vertices of the polyline except the start and end vertices.
+     * @return Options for a polyline.
+     * @since 1.2.0
+     */
     public static PolylineOptions createPolyline(
             @NonNull Context context,
             @Nullable ArrayList<LatLng> locationList,
@@ -156,6 +217,19 @@ public class DirectionConverter {
         );
     }
 
+    /**
+     * Convert the list of latitude and longitude to the polyline options.
+     *
+     * @param context      A context.
+     * @param locationList A list of latitude and longitude.
+     * @param width        Width of the polyline in screen pixels.
+     * @param color        Color of the polyline as a 32-bit ARGB color.
+     * @param clickable    Is polyline clickable.
+     * @param startCap     Cap at the start vertex of the polyline.
+     * @param endCap       Cap at the end vertex of the polyline.
+     * @return Options for a polyline.
+     * @since 1.2.0
+     */
     public static PolylineOptions createPolyline(
             @NonNull Context context,
             @Nullable ArrayList<LatLng> locationList,
@@ -178,6 +252,18 @@ public class DirectionConverter {
         );
     }
 
+    /**
+     * Convert the list of latitude and longitude to the polyline options.
+     *
+     * @param context         A context.
+     * @param locationList    A list of latitude and longitude.
+     * @param width           Width of the polyline in screen pixels.
+     * @param color           Color of the polyline as a 32-bit ARGB color.
+     * @param clickable       Is polyline clickable.
+     * @param patternItemList Stroke pattern for the polyline.
+     * @return Options for a polyline.
+     * @since 1.2.0
+     */
     public static PolylineOptions createPolyline(
             @NonNull Context context,
             @Nullable ArrayList<LatLng> locationList,
@@ -199,6 +285,21 @@ public class DirectionConverter {
         );
     }
 
+    /**
+     * Convert the list of latitude and longitude to the polyline options.
+     *
+     * @param context         A context.
+     * @param locationList    A list of latitude and longitude.
+     * @param width           Width of the polyline in screen pixels.
+     * @param color           Color of the polyline as a 32-bit ARGB color.
+     * @param clickable       Is polyline clickable.
+     * @param jointType       Joint type for all vertices of the polyline except the start and end vertices.
+     * @param startCap        Cap at the start vertex of the polyline.
+     * @param endCap          Cap at the end vertex of the polyline.
+     * @param patternItemList Stroke pattern for the polyline.
+     * @return Options for a polyline.
+     * @since 1.2.0
+     */
     public static PolylineOptions createPolyline(
             @NonNull Context context,
             @Nullable ArrayList<LatLng> locationList,
@@ -229,6 +330,14 @@ public class DirectionConverter {
         return rectLine;
     }
 
+    /**
+     * Convert the path option to the polyline options.
+     *
+     * @param context           A context.
+     * @param transitPathOption Path options of the steps for transit result.
+     * @return Options for a polyline.
+     * @since 1.2.0
+     */
     public static ArrayList<PolylineOptions> createTransitPolyline(
             @NonNull Context context,
             @NonNull TransitPathOption transitPathOption) {
@@ -248,6 +357,18 @@ public class DirectionConverter {
         );
     }
 
+    /**
+     * Convert the list of latitude and longitude to the polyline options in transit mode.
+     *
+     * @param context      A context.
+     * @param stepList     A list of latitude and longitude for the steps.
+     * @param transitWidth Width of the polyline in screen pixels for transit polyline.
+     * @param transitColor Color of the polyline as a 32-bit ARGB color for transit polyline.
+     * @param walkingWidth Width of the polyline in screen pixels for walking polyline.
+     * @param walkingColor Color of the polyline as a 32-bit ARGB color for walking polyline.
+     * @return Options for a polyline.
+     * @since 1.0.0
+     */
     public static ArrayList<PolylineOptions> createTransitPolyline(
             @NonNull Context context,
             @Nullable List<Step> stepList,
@@ -271,6 +392,20 @@ public class DirectionConverter {
         );
     }
 
+    /**
+     * Convert the list of latitude and longitude to the polyline options in transit mode.
+     *
+     * @param context                A context.
+     * @param stepList               A list of latitude and longitude for the steps.
+     * @param transitWidth           Width of the polyline in screen pixels for transit polyline.
+     * @param transitColor           Color of the polyline as a 32-bit ARGB color for transit polyline.
+     * @param transitPatternItemList Stroke pattern for the polyline for transit polyline.
+     * @param walkingWidth           Width of the polyline in screen pixels for walking polyline.
+     * @param walkingColor           Color of the polyline as a 32-bit ARGB color for walking polyline.
+     * @param walkingPatternItemList Stroke pattern for the polyline for walking polyline.
+     * @return Options for a polyline.
+     * @since 1.2.0
+     */
     public static ArrayList<PolylineOptions> createTransitPolyline(
             @NonNull Context context,
             @Nullable List<Step> stepList,
@@ -296,6 +431,19 @@ public class DirectionConverter {
         );
     }
 
+    /**
+     * Convert the list of latitude and longitude to the polyline options in transit mode.
+     *
+     * @param context      A context.
+     * @param stepList     A list of latitude and longitude for the steps.
+     * @param transitWidth Width of the polyline in screen pixels for transit polyline.
+     * @param transitColor Color of the polyline as a 32-bit ARGB color for transit polyline.
+     * @param walkingWidth Width of the polyline in screen pixels for walking polyline.
+     * @param walkingColor Color of the polyline as a 32-bit ARGB color for walking polyline.
+     * @param clickable    Is polyline clickable.
+     * @return Options for a polyline.
+     * @since 1.2.0
+     */
     public static ArrayList<PolylineOptions> createTransitPolyline(
             @NonNull Context context,
             @Nullable List<Step> stepList,
@@ -320,6 +468,20 @@ public class DirectionConverter {
         );
     }
 
+    /**
+     * Convert the list of latitude and longitude to the polyline options in transit mode.
+     *
+     * @param context      A context.
+     * @param stepList     A list of latitude and longitude for the steps.
+     * @param transitWidth Width of the polyline in screen pixels for transit polyline.
+     * @param transitColor Color of the polyline as a 32-bit ARGB color for transit polyline.
+     * @param walkingWidth Width of the polyline in screen pixels for walking polyline.
+     * @param walkingColor Color of the polyline as a 32-bit ARGB color for walking polyline.
+     * @param clickable    Is polyline clickable.
+     * @param jointType    Joint type for all vertices of the polyline except the start and end vertices.
+     * @return Options for a polyline.
+     * @since 1.2.0
+     */
     public static ArrayList<PolylineOptions> createTransitPolyline(
             @NonNull Context context,
             @Nullable List<Step> stepList,
@@ -345,6 +507,21 @@ public class DirectionConverter {
         );
     }
 
+    /**
+     * Convert the list of latitude and longitude to the polyline options in transit mode.
+     *
+     * @param context      A context.
+     * @param stepList     A list of latitude and longitude for the steps.
+     * @param transitWidth Width of the polyline in screen pixels for transit polyline.
+     * @param transitColor Color of the polyline as a 32-bit ARGB color for transit polyline.
+     * @param walkingWidth Width of the polyline in screen pixels for walking polyline.
+     * @param walkingColor Color of the polyline as a 32-bit ARGB color for walking polyline.
+     * @param clickable    Is polyline clickable.
+     * @param startCap     Cap at the start vertex of the polyline.
+     * @param endCap       Cap at the end vertex of the polyline.
+     * @return Options for a polyline.
+     * @since 1.2.0
+     */
     public static ArrayList<PolylineOptions> createTransitPolyline(
             @NonNull Context context,
             @Nullable List<Step> stepList,
@@ -371,6 +548,24 @@ public class DirectionConverter {
         );
     }
 
+    /**
+     * Convert the list of latitude and longitude to the polyline options in transit mode.
+     *
+     * @param context                A context.
+     * @param stepList               A list of latitude and longitude for the steps.
+     * @param transitWidth           Width of the polyline in screen pixels for transit polyline.
+     * @param transitColor           Color of the polyline as a 32-bit ARGB color for transit polyline.
+     * @param transitPatternItemList Stroke pattern for the polyline for transit polyline.
+     * @param walkingWidth           Width of the polyline in screen pixels for walking polyline.
+     * @param walkingColor           Color of the polyline as a 32-bit ARGB color for walking polyline.
+     * @param walkingPatternItemList Stroke pattern for the polyline for walking polyline.
+     * @param clickable              Is polyline clickable.
+     * @param jointType              Joint type for all vertices of the polyline except the start and end vertices.
+     * @param startCap               Cap at the start vertex of the polyline.
+     * @param endCap                 Cap at the end vertex of the polyline.
+     * @return Options for a polyline.
+     * @since 1.2.0
+     */
     public static ArrayList<PolylineOptions> createTransitPolyline(
             @NonNull Context context,
             @Nullable List<Step> stepList,
@@ -420,11 +615,19 @@ public class DirectionConverter {
         return polylineOptionsList;
     }
 
+    /**
+     * For internal use.
+     */
     private static int dpToPx(Context context, int dp) {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         return Math.round(dp * (displayMetrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT));
     }
 
+    /**
+     * A bunch of parameters for convert the step to polyline options.
+     *
+     * @since 1.2.0
+     */
     public static class PathOption {
         ArrayList<LatLng> locationList;
         int width;
@@ -508,6 +711,11 @@ public class DirectionConverter {
         }
     }
 
+    /**
+     * A bunch of parameters for convert the step to polyline options for transit result.
+     *
+     * @since 1.2.0
+     */
     public static class TransitPathOption {
         List<Step> stepList = null;
         int transitWidth;

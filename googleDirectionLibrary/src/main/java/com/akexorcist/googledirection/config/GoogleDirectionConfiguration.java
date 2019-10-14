@@ -3,7 +3,9 @@ package com.akexorcist.googledirection.config;
 import okhttp3.OkHttpClient;
 
 /**
- * Created by Akexorcist on 12/1/2016 AD.
+ * Configuration class for the Google Direction Library.
+ *
+ * @since 1.0.0
  */
 
 public class GoogleDirectionConfiguration {
@@ -11,8 +13,9 @@ public class GoogleDirectionConfiguration {
 
     /**
      * Call the class with singleton pattern
+     *
      * @return The singleton object of this class
-     * @since 1.0
+     * @since 1.0.0
      */
     public static GoogleDirectionConfiguration getInstance() {
         if (configuration == null) {
@@ -26,8 +29,9 @@ public class GoogleDirectionConfiguration {
 
     /**
      * Get the custom OkHttpClient
+     *
      * @return The OkHttpClient object
-     * @since 1.0
+     * @since 1.0.0
      */
     public OkHttpClient getCustomClient() {
         return customClient;
@@ -35,8 +39,9 @@ public class GoogleDirectionConfiguration {
 
     /**
      * Set the custom OkHttpClient to replace the default client in this library
+     *
      * @param customClient The OkHttpClient object
-     * @since 1.0
+     * @since 1.0.0
      */
     public void setCustomClient(OkHttpClient customClient) {
         this.customClient = customClient;
@@ -44,8 +49,9 @@ public class GoogleDirectionConfiguration {
 
     /**
      * Is the API request logging enable or disable
+     *
      * @return The value will be true for enable and false for disable
-     * @since 1.0
+     * @since 1.0.0
      */
     public boolean isLogEnabled() {
         return isLogEnabled;
@@ -53,8 +59,9 @@ public class GoogleDirectionConfiguration {
 
     /**
      * Enable or disable the API request logging (Powered by OkHttp Logging Interceptor)
+     *
      * @param logEnabled true for enable and false for disable
-     * @since 1.0
+     * @since 1.0.0
      */
     public void setLogEnabled(boolean logEnabled) {
         isLogEnabled = logEnabled;

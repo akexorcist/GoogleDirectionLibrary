@@ -19,7 +19,7 @@ limitations under the License.
 package com.akexorcist.googledirection.constant;
 
 /**
- * Created by Akexorcist on 11/29/15 AD.
+ * For internal use.
  */
 public class DirectionUrl {
     public static final String MAPS_API_URL = "https://maps.googleapis.com/maps/api/";

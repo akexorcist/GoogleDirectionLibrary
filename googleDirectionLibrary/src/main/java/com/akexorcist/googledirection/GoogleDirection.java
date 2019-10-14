@@ -21,9 +21,21 @@ package com.akexorcist.googledirection;
 import com.akexorcist.googledirection.request.DirectionOriginRequest;
 
 /**
- * Created by Akexorcist on 11/29/15 AD.
+ * Initiate class for direction request of the Google Direction API.
+ *
+ * @since 1.0.0
  */
 public class GoogleDirection {
+    /**
+     * Create the Google Direction with Google Direction API Key.
+     * <BR />
+     * <B>Notes</B> - Do not put your Web API Key in the code directly.
+     * The key may be stole and misused by malicious parties.
+     *
+     * @param apiKey Web API Key for the Google Direction API
+     * @return The origin request object
+     * @since 1.0.0
+     */
     public static DirectionOriginRequest withServerKey(String apiKey) {
         return new DirectionOriginRequest(apiKey);
     }

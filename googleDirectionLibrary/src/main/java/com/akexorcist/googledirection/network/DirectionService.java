@@ -26,7 +26,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 /**
- * Created by Akexorcist on 11/29/15 AD.
+ * For internal use.
  */
 public interface DirectionService {
 

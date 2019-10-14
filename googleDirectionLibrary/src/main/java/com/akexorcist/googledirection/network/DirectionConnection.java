@@ -27,7 +27,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by Akexorcist on 11/29/15 AD.
+ * For internal use.
  */
 public class DirectionConnection {
     private static DirectionConnection connection;

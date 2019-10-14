@@ -1,7 +1,9 @@
 package com.akexorcist.googledirection.constant;
 
 /**
- * Created by Akexorcist on 12/5/15 AD.
+ * Action to take for the current step.
+ *
+ * @since 1.0.0
  */
 public class Maneuver {
     public static final String MERGE = "merge";
