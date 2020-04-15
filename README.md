@@ -159,6 +159,8 @@ ProGuard
 -keepclasseswithmembers class * {
     @retrofit2.http.* <methods>;
 }
+
+-keep class com.akexorcist.googledirection.model.** { *;}
 ```
 
 Special Thank
