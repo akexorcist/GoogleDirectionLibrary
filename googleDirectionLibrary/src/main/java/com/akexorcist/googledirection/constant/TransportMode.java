@@ -58,7 +58,8 @@ public class TransportMode {
     @StringDef({
             DRIVING,
             WALKING,
-            BICYCLING
+            BICYCLING,
+            TRANSIT
     })
     public @interface Value {
     }
