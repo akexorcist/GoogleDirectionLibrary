@@ -81,7 +81,7 @@ public class DirectionDestinationRequest {
      * @return The direction request object.
      * @since 1.0.0
      */
-    public DirectionRequest to(LatLng destination) {
+    public DirectionRequest to(@NonNull LatLng destination) {
         return new DirectionRequest(apiKey, origin, destination, waypointList);
     }
 }
