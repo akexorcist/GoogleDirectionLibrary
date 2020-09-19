@@ -86,7 +86,7 @@ public class Language {
     public static final String PORTUGUESE_BRAZIL = "pt-BR";
     public static final String PORTUGUESE_PORTUGAL = "pt-PT";
     public static final String PUNJABI = "pa";
-    public static final String ROMANIAN = "rp";
+    public static final String ROMANIAN = "ro";
     public static final String RUSSIAN = "ru";
     public static final String SERBIAN = "sr";
     public static final String SINHALESE = "si";
