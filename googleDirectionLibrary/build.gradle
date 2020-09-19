@@ -49,9 +49,9 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.13'
     implementation 'androidx.annotation:annotation:1.1.0'
-    implementation 'com.squareup.retrofit2:retrofit:2.6.2'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.14.2'
-    implementation('com.squareup.retrofit2:converter-gson:2.6.0') {
+    implementation 'com.squareup.retrofit2:retrofit:2.7.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.2'
+    implementation('com.squareup.retrofit2:converter-gson:2.6.2') {
         exclude module: 'retrofit'
     }
     implementation('com.google.android.gms:play-services-maps:17.0.0') {
