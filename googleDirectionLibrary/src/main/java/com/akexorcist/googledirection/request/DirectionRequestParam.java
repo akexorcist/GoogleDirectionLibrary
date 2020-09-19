@@ -21,6 +21,9 @@ package com.akexorcist.googledirection.request;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.List;
@@ -28,7 +31,7 @@ import java.util.List;
 /**
  * For internal use.
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "UnusedReturnValue"})
 public class DirectionRequestParam implements Parcelable {
     private LatLng origin;
     private LatLng destination;
@@ -38,6 +41,8 @@ public class DirectionRequestParam implements Parcelable {
     private String unit;
     private String avoid;
     private String transitMode;
+    private String trafficModel;
+    private String transitRoutingPreference;
     private boolean alternatives;
     private String apiKey;
     private List<LatLng> waypoints;
@@ -55,68 +60,95 @@ public class DirectionRequestParam implements Parcelable {
         unit = in.readString();
         avoid = in.readString();
         transitMode = in.readString();
+        trafficModel = in.readString();
+        transitRoutingPreference = in.readString();
         alternatives = in.readByte() != 0;
         apiKey = in.readString();
         waypoints = in.createTypedArrayList(LatLng.CREATOR);
         optimizeWaypoints = in.readByte() != 0;
     }
 
+    @Nullable
     public LatLng getOrigin() {
         return origin;
     }
 
-    public DirectionRequestParam setOrigin(LatLng origin) {
+    public DirectionRequestParam setOrigin(@Nullable LatLng origin) {
         this.origin = origin;
         return this;
     }
 
+    @Nullable
     public LatLng getDestination() {
         return destination;
     }
 
-    public DirectionRequestParam setDestination(LatLng destination) {
+    public DirectionRequestParam setDestination(@Nullable LatLng destination) {
         this.destination = destination;
         return this;
     }
 
+    @Nullable
     public String getTransportMode() {
         return transportMode;
     }
 
-    public void setTransportMode(String transportMode) {
+    public void setTransportMode(@Nullable String transportMode) {
         this.transportMode = transportMode;
     }
 
+    @Nullable
     public String getLanguage() {
         return language;
     }
 
-    public void setLanguage(String language) {
+    public void setLanguage(@Nullable String language) {
         this.language = language;
     }
 
+    @Nullable
     public String getUnit() {
         return unit;
     }
 
-    public void setUnit(String unit) {
+    public void setUnit(@Nullable String unit) {
         this.unit = unit;
     }
 
+    @Nullable
     public String getAvoid() {
         return avoid;
     }
 
-    public void setAvoid(String avoid) {
+    public void setAvoid(@Nullable String avoid) {
         this.avoid = avoid;
     }
 
+    @Nullable
     public String getTransitMode() {
         return transitMode;
     }
 
-    public void setTransitMode(String transitMode) {
+    public void setTransitMode(@Nullable String transitMode) {
         this.transitMode = transitMode;
+    }
+
+    @Nullable
+    public String getTrafficModel() {
+        return trafficModel;
+    }
+
+    public void setTrafficModel(@Nullable String trafficModel) {
+        this.trafficModel = trafficModel;
+    }
+
+    @Nullable
+    public String getTransitRoutingPreference() {
+        return transitRoutingPreference;
+    }
+
+    public void setTransitRoutingPreference(@Nullable String transitRoutingPreference) {
+        this.transitRoutingPreference = transitRoutingPreference;
     }
 
     public boolean isAlternatives() {
@@ -127,29 +159,32 @@ public class DirectionRequestParam implements Parcelable {
         this.alternatives = alternatives;
     }
 
+    @Nullable
     public String getApiKey() {
         return apiKey;
     }
 
-    public DirectionRequestParam setApiKey(String apiKey) {
+    public DirectionRequestParam setApiKey(@Nullable String apiKey) {
         this.apiKey = apiKey;
         return this;
     }
 
+    @Nullable
     public String getDepartureTime() {
         return departureTime;
     }
 
-    public DirectionRequestParam setDepartureTime(String departureTime) {
+    public DirectionRequestParam setDepartureTime(@Nullable String departureTime) {
         this.departureTime = departureTime;
         return this;
     }
 
+    @Nullable
     public List<LatLng> getWaypoints() {
         return waypoints;
     }
 
-    public DirectionRequestParam setWaypoints(List<LatLng> waypoints) {
+    public DirectionRequestParam setWaypoints(@Nullable List<LatLng> waypoints) {
         this.waypoints = waypoints;
         return this;
     }
@@ -173,6 +208,8 @@ public class DirectionRequestParam implements Parcelable {
         dest.writeString(unit);
         dest.writeString(avoid);
         dest.writeString(transitMode);
+        dest.writeString(trafficModel);
+        dest.writeString(transitRoutingPreference);
         dest.writeByte((byte) (alternatives ? 1 : 0));
         dest.writeString(apiKey);
         dest.writeTypedList(waypoints);

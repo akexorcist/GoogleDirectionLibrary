@@ -42,6 +42,7 @@ import java.util.List;
  *
  * @since 1.0.0
  */
+@SuppressWarnings("unused")
 public class DirectionConverter {
     /**
      * Convert the route paths to list of latitude and longitude.
@@ -618,7 +619,8 @@ public class DirectionConverter {
     /**
      * For internal use.
      */
-    private static int dpToPx(Context context, int dp) {
+    @SuppressWarnings("IntegerDivisionInFloatingPointContext")
+    private static int dpToPx(@NonNull Context context, int dp) {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         return Math.round(dp * (displayMetrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT));
     }

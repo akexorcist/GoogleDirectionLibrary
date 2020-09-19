@@ -59,21 +59,25 @@ class AlternativeDirectionActivity : AppCompatActivity() {
             )
     }
 
-    private fun onDirectionSuccess(direction: Direction) {
-        showSnackbar(getString(R.string.success_with_status, direction.status))
-        if (direction.isOK) {
-            googleMap?.addMarker(MarkerOptions().position(origin))
-            googleMap?.addMarker(MarkerOptions().position(destination))
-            for (i in 0 until direction.routeList.size) {
-                val route = direction.routeList[i]
-                val color = ContextCompat.getColor(this, pathColors[i % pathColors.size])
-                val directionPositionList = route.legList[0].directionPoint
-                googleMap?.addPolyline(DirectionConverter.createPolyline(this, directionPositionList, 5, color))
+    private fun onDirectionSuccess(direction: Direction?) {
+        direction?.let {
+            showSnackbar(getString(R.string.success_with_status, direction.status))
+            if (direction.isOK) {
+                googleMap?.addMarker(MarkerOptions().position(origin))
+                googleMap?.addMarker(MarkerOptions().position(destination))
+                for (i in 0 until direction.routeList.size) {
+                    val route = direction.routeList[i]
+                    val color = ContextCompat.getColor(this, pathColors[i % pathColors.size])
+                    val directionPositionList = route.legList[0].directionPoint
+                    googleMap?.addPolyline(DirectionConverter.createPolyline(this, directionPositionList, 5, color))
+                }
+                setCameraWithCoordinationBounds(direction.routeList[0])
+                buttonRequestDirection.visibility = View.GONE
+            } else {
+                showSnackbar(direction.status)
             }
-            setCameraWithCoordinationBounds(direction.routeList[0])
-            buttonRequestDirection.visibility = View.GONE
-        } else {
-            showSnackbar(direction.status)
+        } ?: run {
+            showSnackbar(getString(R.string.success_with_empty))
         }
     }
 

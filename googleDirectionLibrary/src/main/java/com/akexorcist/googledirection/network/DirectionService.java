@@ -40,6 +40,8 @@ public interface DirectionService {
                                  @Query("units") String units,
                                  @Query("avoid") String avoid,
                                  @Query("transit_mode") String transitMode,
+                                 @Query("traffic_model") String trafficModel,
+                                 @Query("transit_routing_preference") String transitRoutingPreference,
                                  @Query("alternatives") boolean alternatives,
                                  @Query("key") String apiKey);
 }

@@ -18,6 +18,8 @@ limitations under the License.
 
 package com.akexorcist.googledirection;
 
+import androidx.annotation.NonNull;
+
 import com.akexorcist.googledirection.request.DirectionOriginRequest;
 
 /**
@@ -36,7 +38,7 @@ public class GoogleDirection {
      * @return The origin request object
      * @since 1.0.0
      */
-    public static DirectionOriginRequest withServerKey(String apiKey) {
+    public static DirectionOriginRequest withServerKey(@NonNull String apiKey) {
         return new DirectionOriginRequest(apiKey);
     }
 }

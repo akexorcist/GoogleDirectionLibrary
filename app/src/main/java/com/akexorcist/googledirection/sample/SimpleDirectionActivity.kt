@@ -53,18 +53,29 @@ class SimpleDirectionActivity : AppCompatActivity() {
             )
     }
 
-    private fun onDirectionSuccess(direction: Direction) {
-        showSnackbar(getString(R.string.success_with_status, direction.status))
-        if (direction.isOK) {
-            val route = direction.routeList[0]
-            googleMap?.addMarker(MarkerOptions().position(origin))
-            googleMap?.addMarker(MarkerOptions().position(destination))
-            val directionPositionList = route.legList[0].directionPoint
-            googleMap?.addPolyline(DirectionConverter.createPolyline(this, directionPositionList, 5, Color.RED))
-            setCameraWithCoordinationBounds(route)
-            buttonRequestDirection.visibility = View.GONE
-        } else {
-            showSnackbar(direction.status)
+    private fun onDirectionSuccess(direction: Direction?) {
+        direction?.let {
+            showSnackbar(getString(R.string.success_with_status, direction.status))
+            if (direction.isOK) {
+                val route = direction.routeList[0]
+                googleMap?.addMarker(MarkerOptions().position(origin))
+                googleMap?.addMarker(MarkerOptions().position(destination))
+                val directionPositionList = route.legList[0].directionPoint
+                googleMap?.addPolyline(
+                    DirectionConverter.createPolyline(
+                        this,
+                        directionPositionList,
+                        5,
+                        Color.RED
+                    )
+                )
+                setCameraWithCoordinationBounds(route)
+                buttonRequestDirection.visibility = View.GONE
+            } else {
+                showSnackbar(direction.status)
+            }
+        } ?: run {
+            showSnackbar(getString(R.string.success_with_empty))
         }
     }
 

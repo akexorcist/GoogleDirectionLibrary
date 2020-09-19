@@ -18,10 +18,15 @@ limitations under the License.
 
 package com.akexorcist.googledirection.request;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.akexorcist.googledirection.DirectionCallback;
 import com.akexorcist.googledirection.model.Direction;
 import com.akexorcist.googledirection.network.DirectionConnection;
 import com.google.android.gms.maps.model.LatLng;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -34,10 +39,11 @@ import retrofit2.Response;
  *
  * @since 1.0.0
  */
+@SuppressWarnings("unused")
 public class DirectionRequest {
     private DirectionRequestParam param;
 
-    public DirectionRequest(String apiKey, LatLng origin, LatLng destination, List<LatLng> waypointList) {
+    public DirectionRequest(@NonNull String apiKey, @NonNull LatLng origin, @NonNull LatLng destination, @Nullable List<LatLng> waypointList) {
         param = new DirectionRequestParam().setApiKey(apiKey).setOrigin(origin).setDestination(destination).setWaypoints(waypointList);
     }
 
@@ -48,7 +54,7 @@ public class DirectionRequest {
      * @return This direction request object.
      * @since 1.0.0
      */
-    public DirectionRequest transportMode(String transportMode) {
+    public DirectionRequest transportMode(@Nullable String transportMode) {
         param.setTransportMode(transportMode);
         return this;
     }
@@ -60,7 +66,7 @@ public class DirectionRequest {
      * @return This direction request object.
      * @since 1.0.0
      */
-    public DirectionRequest language(String language) {
+    public DirectionRequest language(@Nullable String language) {
         param.setLanguage(language);
         return this;
     }
@@ -72,7 +78,7 @@ public class DirectionRequest {
      * @return This direction request object.
      * @since 1.0.0
      */
-    public DirectionRequest unit(String unit) {
+    public DirectionRequest unit(@Nullable String unit) {
         param.setUnit(unit);
         return this;
     }
@@ -84,7 +90,7 @@ public class DirectionRequest {
      * @return This direction request object.
      * @since 1.0.0
      */
-    public DirectionRequest avoid(String avoid) {
+    public DirectionRequest avoid(@Nullable String avoid) {
         String oldAvoid = param.getAvoid();
         if (oldAvoid != null && !oldAvoid.isEmpty()) {
             oldAvoid += "|";
@@ -103,7 +109,7 @@ public class DirectionRequest {
      * @return This direction request object.
      * @since 1.0.0
      */
-    public DirectionRequest transitMode(String transitMode) {
+    public DirectionRequest transitMode(@Nullable String transitMode) {
         String oldTransitMode = param.getTransitMode();
         if (oldTransitMode != null && !oldTransitMode.isEmpty()) {
             oldTransitMode += "|";
@@ -112,6 +118,31 @@ public class DirectionRequest {
         }
         oldTransitMode += transitMode;
         param.setTransitMode(oldTransitMode);
+        return this;
+    }
+
+    /**
+     * Specifies the assumptions to use when calculating time in traffic.
+     *
+     * @param trafficModel the traffic model value from @see {@link com.akexorcist.googledirection.constant.TrafficModel}.
+     * @return This direction request object.
+     * @since 1.2.1
+     */
+    public DirectionRequest trafficMode(@Nullable String trafficModel) {
+        param.setTrafficModel(trafficModel);
+        return this;
+    }
+
+    /**
+     * Specifies preferences for transit routes. Using this parameter, you can bias the
+     * options returned, rather than accepting the default best route chosen by the API.
+     *
+     * @param transitRoutingPreference the transit routing preference value from @see {@link com.akexorcist.googledirection.constant.TransitRoutingPreference}.
+     * @return This direction request object.
+     * @since 1.2.1
+     */
+    public DirectionRequest transitRoutingPreference(@Nullable String transitRoutingPreference) {
+        param.setTransitRoutingPreference(transitRoutingPreference);
         return this;
     }
 
@@ -134,7 +165,7 @@ public class DirectionRequest {
      * @return This direction request object.
      * @since 1.0.0
      */
-    public DirectionRequest departureTime(String time) {
+    public DirectionRequest departureTime(@Nullable String time) {
         param.setDepartureTime(time);
         return this;
     }
@@ -158,11 +189,19 @@ public class DirectionRequest {
      * @return The task for direction request.
      * @since 1.0.0
      */
-    public DirectionTask execute(final DirectionCallback callback) {
+    public DirectionTask execute(@Nullable final DirectionCallback callback) {
+        String origin = null;
+        if (param.getOrigin() != null) {
+            origin = param.getOrigin().latitude + "," + param.getOrigin().longitude;
+        }
+        String destination = null;
+        if (param.getDestination() != null) {
+            destination = param.getDestination().latitude + "," + param.getDestination().longitude;
+        }
         Call<Direction> direction = DirectionConnection.getInstance()
                 .createService()
-                .getDirection(param.getOrigin().latitude + "," + param.getOrigin().longitude,
-                        param.getDestination().latitude + "," + param.getDestination().longitude,
+                .getDirection(origin,
+                        destination,
                         waypointsToString(param.getWaypoints()),
                         param.getTransportMode(),
                         param.getDepartureTime(),
@@ -170,20 +209,24 @@ public class DirectionRequest {
                         param.getUnit(),
                         param.getAvoid(),
                         param.getTransitMode(),
+                        param.getTrafficModel(),
+                        param.getTransitRoutingPreference(),
                         param.isAlternatives(),
                         param.getApiKey());
 
         direction.enqueue(new Callback<Direction>() {
             @Override
-            public void onResponse(Call<Direction> call, Response<Direction> response) {
+            public void onResponse(@NotNull Call<Direction> call, @NotNull Response<Direction> response) {
                 if (callback != null) {
                     callback.onDirectionSuccess(response.body());
                 }
             }
 
             @Override
-            public void onFailure(Call<Direction> call, Throwable t) {
-                callback.onDirectionFailure(t);
+            public void onFailure(@NotNull Call<Direction> call, @NotNull Throwable t) {
+                if (callback != null) {
+                    callback.onDirectionFailure(t);
+                }
             }
         });
         return new DirectionTask(direction);
@@ -192,7 +235,7 @@ public class DirectionRequest {
     /**
      * For internal use.
      */
-    private String waypointsToString(List<LatLng> waypoints) {
+    private String waypointsToString(@Nullable List<LatLng> waypoints) {
         if (waypoints != null && !waypoints.isEmpty()) {
             StringBuilder string = new StringBuilder(param.isOptimizeWaypoints() ? "optimize:true|" : "");
             string.append(waypoints.get(0).latitude).append(",").append(waypoints.get(0).longitude);

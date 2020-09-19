@@ -55,24 +55,35 @@ class TransitDirectionActivity : AppCompatActivity() {
             )
     }
 
-    private fun onDirectionSuccess(direction: Direction) {
-        showSnackbar(getString(R.string.success_with_status, direction.status))
-        if (direction.isOK) {
-            val route = direction.routeList[0]
-            val leg = route.legList[0]
-            val sectionPositionList = leg.sectionPoint
-            for (position in sectionPositionList) {
-                googleMap?.addMarker(MarkerOptions().position(position))
+    private fun onDirectionSuccess(direction: Direction?) {
+        direction?.let {
+            showSnackbar(getString(R.string.success_with_status, direction.status))
+            if (direction.isOK) {
+                val route = direction.routeList[0]
+                val leg = route.legList[0]
+                val sectionPositionList = leg.sectionPoint
+                for (position in sectionPositionList) {
+                    googleMap?.addMarker(MarkerOptions().position(position))
+                }
+                val stepList = leg.stepList
+                val polylineOptionList = DirectionConverter.createTransitPolyline(
+                    this,
+                    stepList,
+                    5,
+                    Color.RED,
+                    3,
+                    Color.BLUE
+                )
+                for (polylineOption in polylineOptionList) {
+                    googleMap?.addPolyline(polylineOption)
+                }
+                setCameraWithCoordinationBounds(route)
+                buttonRequestDirection.visibility = View.GONE
+            } else {
+                showSnackbar(direction.status)
             }
-            val stepList = leg.stepList
-            val polylineOptionList = DirectionConverter.createTransitPolyline(this, stepList, 5, Color.RED, 3, Color.BLUE)
-            for (polylineOption in polylineOptionList) {
-                googleMap?.addPolyline(polylineOption)
-            }
-            setCameraWithCoordinationBounds(route)
-            buttonRequestDirection.visibility = View.GONE
-        } else {
-            showSnackbar(direction.status)
+        } ?: run {
+            showSnackbar(getString(R.string.success_with_empty))
         }
     }
 

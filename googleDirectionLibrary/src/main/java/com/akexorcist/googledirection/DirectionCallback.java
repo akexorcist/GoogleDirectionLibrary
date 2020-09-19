@@ -18,6 +18,9 @@ limitations under the License.
 
 package com.akexorcist.googledirection;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.akexorcist.googledirection.model.Direction;
 
 /**
@@ -32,7 +35,7 @@ public interface DirectionCallback {
      * @param direction The direction result from the Google Direction API
      * @since 1.0.0
      */
-    void onDirectionSuccess(Direction direction);
+    void onDirectionSuccess(@Nullable Direction direction);
 
     /**
      * Retrieve the response from direction request with error result.
@@ -40,5 +43,5 @@ public interface DirectionCallback {
      * @param t A throwable from the response of Google Direction API.
      * @since 1.0.0
      */
-    void onDirectionFailure(Throwable t);
+    void onDirectionFailure(@NonNull Throwable t);
 }

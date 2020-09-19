@@ -15,10 +15,10 @@ import com.akexorcist.googledirection.request.DirectionTask
  * @since 1.2.0
  */
 fun DirectionRequest.execute(
-    onDirectionSuccess: ((Direction) -> Unit)? = null,
+    onDirectionSuccess: ((Direction?) -> Unit)? = null,
     onDirectionFailure: ((Throwable) -> Unit)? = null
 ): DirectionTask = execute(object : DirectionCallback {
-    override fun onDirectionSuccess(direction: Direction) {
+    override fun onDirectionSuccess(direction: Direction?) {
         onDirectionSuccess?.invoke(direction)
     }
 

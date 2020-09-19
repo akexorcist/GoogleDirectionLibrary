@@ -57,27 +57,38 @@ class WaypointsDirectionActivity : AppCompatActivity() {
             )
     }
 
-    private fun onDirectionSuccess(direction: Direction) {
-        showSnackbar(getString(R.string.success_with_status, direction.status))
-        if (direction.isOK) {
-            val route = direction.routeList[0]
-            val legCount = route.legList.size
-            for (index in 0 until legCount) {
-                val leg = route.legList[index]
-                googleMap?.addMarker(MarkerOptions().position(leg.startLocation.coordination))
-                if (index == legCount - 1) {
-                    googleMap?.addMarker(MarkerOptions().position(leg.endLocation.coordination))
+    private fun onDirectionSuccess(direction: Direction?) {
+        direction?.let {
+            showSnackbar(getString(R.string.success_with_status, direction.status))
+            if (direction.isOK) {
+                val route = direction.routeList[0]
+                val legCount = route.legList.size
+                for (index in 0 until legCount) {
+                    val leg = route.legList[index]
+                    googleMap?.addMarker(MarkerOptions().position(leg.startLocation.coordination))
+                    if (index == legCount - 1) {
+                        googleMap?.addMarker(MarkerOptions().position(leg.endLocation.coordination))
+                    }
+                    val stepList = leg.stepList
+                    val polylineOptionList = DirectionConverter.createTransitPolyline(
+                        this,
+                        stepList,
+                        5,
+                        Color.RED,
+                        3,
+                        Color.BLUE
+                    )
+                    for (polylineOption in polylineOptionList) {
+                        googleMap?.addPolyline(polylineOption)
+                    }
                 }
-                val stepList = leg.stepList
-                val polylineOptionList = DirectionConverter.createTransitPolyline(this, stepList, 5, Color.RED, 3, Color.BLUE)
-                for (polylineOption in polylineOptionList) {
-                    googleMap?.addPolyline(polylineOption)
-                }
+                setCameraWithCoordinationBounds(route)
+                buttonRequestDirection.visibility = View.GONE
+            } else {
+                showSnackbar(direction.status)
             }
-            setCameraWithCoordinationBounds(route)
-            buttonRequestDirection.visibility = View.GONE
-        } else {
-            showSnackbar(direction.status)
+        } ?: run {
+            showSnackbar(getString(R.string.success_with_empty))
         }
     }
 

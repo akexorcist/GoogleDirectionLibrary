@@ -18,6 +18,9 @@ limitations under the License.
 
 package com.akexorcist.googledirection.request;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
@@ -29,11 +32,14 @@ import java.util.List;
  * @since 1.0.0
  */
 public class DirectionDestinationRequest {
+    @NonNull
     private String apiKey;
+    @NonNull
     private LatLng origin;
+    @Nullable
     private List<LatLng> waypointList;
 
-    public DirectionDestinationRequest(String apiKey, LatLng origin) {
+    public DirectionDestinationRequest(@NonNull String apiKey, @NonNull LatLng origin) {
         this.apiKey = apiKey;
         this.origin = origin;
     }
@@ -45,7 +51,7 @@ public class DirectionDestinationRequest {
      * @return This destination request object.
      * @since 1.0.0
      */
-    public DirectionDestinationRequest and(LatLng waypoint) {
+    public DirectionDestinationRequest and(@NonNull LatLng waypoint) {
         if (waypointList == null) {
             waypointList = new ArrayList<>();
         }
@@ -60,7 +66,7 @@ public class DirectionDestinationRequest {
      * @return This destination request object.
      * @since 1.0.0
      */
-    public DirectionDestinationRequest and(List<LatLng> waypointList) {
+    public DirectionDestinationRequest and(@NonNull List<LatLng> waypointList) {
         if (this.waypointList == null) {
             this.waypointList = new ArrayList<>();
         }

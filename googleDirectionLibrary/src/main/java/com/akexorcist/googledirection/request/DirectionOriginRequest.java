@@ -18,6 +18,8 @@ limitations under the License.
 
 package com.akexorcist.googledirection.request;
 
+import androidx.annotation.NonNull;
+
 import com.google.android.gms.maps.model.LatLng;
 
 /**
@@ -26,9 +28,10 @@ import com.google.android.gms.maps.model.LatLng;
  * @since 1.0.0
  */
 public class DirectionOriginRequest {
+    @NonNull
     private String apiKey;
 
-    public DirectionOriginRequest(String apiKey) {
+    public DirectionOriginRequest(@NonNull String apiKey) {
         this.apiKey = apiKey;
     }
 
@@ -39,7 +42,7 @@ public class DirectionOriginRequest {
      * @return The destination request object.
      * @since 1.0.0
      */
-    public DirectionDestinationRequest from(LatLng origin) {
+    public DirectionDestinationRequest from(@NonNull LatLng origin) {
         return new DirectionDestinationRequest(apiKey, origin);
     }
 }
