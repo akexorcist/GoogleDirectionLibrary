@@ -18,6 +18,11 @@ limitations under the License.
 
 package com.akexorcist.googledirection.constant;
 
+import androidx.annotation.StringDef;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
 /**
  * Traffic Model.
  *
@@ -48,4 +53,13 @@ public class TrafficModel {
      * @since 1.2.1
      */
     public static final String OPTIMISTIC = "optimistic";
+
+    @Retention(RetentionPolicy.SOURCE)
+    @StringDef({
+            BEST_GUESS,
+            PESSIMISTIC,
+            OPTIMISTIC
+    })
+    public @interface Value {
+    }
 }

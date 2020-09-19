@@ -24,6 +24,7 @@ package com.akexorcist.googledirection.constant;
  *
  * @since 1.0.0
  */
+@SuppressWarnings("unused")
 public class RequestResult {
     /**
      * Indicates the response contains a valid result.

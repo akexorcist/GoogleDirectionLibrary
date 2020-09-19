@@ -5,6 +5,7 @@ package com.akexorcist.googledirection.constant;
  *
  * @since 1.0.0
  */
+@SuppressWarnings("unused")
 public class Maneuver {
     public static final String MERGE = "merge";
     public static final String STRAIGHT = "straight";

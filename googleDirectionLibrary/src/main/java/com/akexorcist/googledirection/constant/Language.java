@@ -18,6 +18,11 @@ limitations under the License.
 
 package com.akexorcist.googledirection.constant;
 
+import androidx.annotation.StringDef;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
 /**
  * Supported languages in the Google Direction API.
  *
@@ -105,4 +110,92 @@ public class Language {
     public static final String UZBEK = "uz";
     public static final String VIETNAMESE = "vi";
     public static final String ZULU = "zu";
+
+
+    @Retention(RetentionPolicy.SOURCE)
+    @StringDef({
+            AFRIKAANS,
+            ALBANIAN,
+            AMHARIC,
+            ARABIC,
+            ARMENIAN,
+            AZERBAIJANI,
+            BASQUE,
+            BELARUSIAN,
+            BENGALI,
+            BOSNIAN,
+            BULGARIAN,
+            BURMESE,
+            CATALAN,
+            CHINESE,
+            CHINESE_Simplified,
+            CHINESE_HONG_KONG,
+            CHINESE_TRADITIONAL,
+            CROATIAN,
+            CZECH,
+            DANISH,
+            DUTCH,
+            ENGLISH,
+            ENGLISH_AUSTRALIAN,
+            ENGLISH_GREAT_BRITAIN,
+            ESTONIAN,
+            FARSI,
+            FINNISH,
+            FILIPINO,
+            FRENCH,
+            FRENCH_CANADA,
+            GALICIAN,
+            GEORGIAN,
+            GERMAN,
+            GREEK,
+            GUJARATI,
+            HEBREW,
+            HINDI,
+            HUNGARIAN,
+            ICELANDIC,
+            INDONESIAN,
+            ITALIAN,
+            JAPANESE,
+            KANNADA,
+            KAZAKH,
+            KHMER,
+            KOREAN,
+            KYRGYZ,
+            LAO,
+            LATVIAN,
+            LITHUANIAN,
+            MACEDONIAN,
+            MALAY,
+            MALAYALAM,
+            MARATHI,
+            MONGOLIAN,
+            NEPALI,
+            NORWEGIAN,
+            POLISH,
+            PORTUGUESE,
+            PORTUGUESE_BRAZIL,
+            PORTUGUESE_PORTUGAL,
+            PUNJABI,
+            ROMANIAN,
+            RUSSIAN,
+            SERBIAN,
+            SINHALESE,
+            SLOVAK,
+            SLOVENIAN,
+            SPANISH,
+            SPANISH_LATIN_AMERICA,
+            SWAHILI,
+            SWEDISH,
+            TAMIL,
+            TELUGU,
+            THAI,
+            TURKISH,
+            UKRAINIAN,
+            URDU,
+            UZBEK,
+            VIETNAMESE,
+            ZULU
+    })
+    public @interface Value {
+    }
 }

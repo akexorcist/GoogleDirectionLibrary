@@ -18,6 +18,11 @@ limitations under the License.
 
 package com.akexorcist.googledirection.constant;
 
+import androidx.annotation.StringDef;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
 /**
  * Transport mode.
  *
@@ -48,4 +53,13 @@ public class TransportMode {
      * @since 1.0.0
      */
     public static final String TRANSIT = "transit";
+
+    @Retention(RetentionPolicy.SOURCE)
+    @StringDef({
+            DRIVING,
+            WALKING,
+            BICYCLING
+    })
+    public @interface Value {
+    }
 }

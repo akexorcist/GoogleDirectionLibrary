@@ -18,6 +18,11 @@ limitations under the License.
 
 package com.akexorcist.googledirection.constant;
 
+import androidx.annotation.StringDef;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
 /**
  * Transit mode.
  *
@@ -54,4 +59,15 @@ public class TransitMode {
      * @since 1.0.0
      */
     public static final String RAIL = "rail";
+
+    @Retention(RetentionPolicy.SOURCE)
+    @StringDef({
+            BUS,
+            SUBWAY,
+            TRAIN,
+            TRAM,
+            RAIL
+    })
+    public @interface Value {
+    }
 }

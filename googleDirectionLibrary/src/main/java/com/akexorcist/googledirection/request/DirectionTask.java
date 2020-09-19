@@ -11,6 +11,7 @@ import retrofit2.Call;
  * @since 1.0.0
  */
 
+@SuppressWarnings("unused")
 public class DirectionTask {
     private Call<Direction> directionCall;
 

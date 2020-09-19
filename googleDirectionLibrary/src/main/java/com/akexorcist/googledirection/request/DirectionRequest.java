@@ -22,6 +22,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.akexorcist.googledirection.DirectionCallback;
+import com.akexorcist.googledirection.constant.AvoidType;
+import com.akexorcist.googledirection.constant.Language;
+import com.akexorcist.googledirection.constant.TrafficModel;
+import com.akexorcist.googledirection.constant.TransitMode;
+import com.akexorcist.googledirection.constant.TransitRoutingPreference;
+import com.akexorcist.googledirection.constant.TransportMode;
+import com.akexorcist.googledirection.constant.Unit;
 import com.akexorcist.googledirection.model.Direction;
 import com.akexorcist.googledirection.network.DirectionConnection;
 import com.google.android.gms.maps.model.LatLng;
@@ -54,7 +61,7 @@ public class DirectionRequest {
      * @return This direction request object.
      * @since 1.0.0
      */
-    public DirectionRequest transportMode(@Nullable String transportMode) {
+    public DirectionRequest transportMode(@Nullable @TransportMode.Value String transportMode) {
         param.setTransportMode(transportMode);
         return this;
     }
@@ -66,7 +73,7 @@ public class DirectionRequest {
      * @return This direction request object.
      * @since 1.0.0
      */
-    public DirectionRequest language(@Nullable String language) {
+    public DirectionRequest language(@Nullable @Language.Value String language) {
         param.setLanguage(language);
         return this;
     }
@@ -78,7 +85,7 @@ public class DirectionRequest {
      * @return This direction request object.
      * @since 1.0.0
      */
-    public DirectionRequest unit(@Nullable String unit) {
+    public DirectionRequest unit(@Nullable @Unit.Value String unit) {
         param.setUnit(unit);
         return this;
     }
@@ -90,7 +97,7 @@ public class DirectionRequest {
      * @return This direction request object.
      * @since 1.0.0
      */
-    public DirectionRequest avoid(@Nullable String avoid) {
+    public DirectionRequest avoid(@Nullable @AvoidType.Value String avoid) {
         String oldAvoid = param.getAvoid();
         if (oldAvoid != null && !oldAvoid.isEmpty()) {
             oldAvoid += "|";
@@ -109,7 +116,7 @@ public class DirectionRequest {
      * @return This direction request object.
      * @since 1.0.0
      */
-    public DirectionRequest transitMode(@Nullable String transitMode) {
+    public DirectionRequest transitMode(@Nullable @TransitMode.Value String transitMode) {
         String oldTransitMode = param.getTransitMode();
         if (oldTransitMode != null && !oldTransitMode.isEmpty()) {
             oldTransitMode += "|";
@@ -128,7 +135,7 @@ public class DirectionRequest {
      * @return This direction request object.
      * @since 1.2.1
      */
-    public DirectionRequest trafficMode(@Nullable String trafficModel) {
+    public DirectionRequest trafficMode(@Nullable @TrafficModel.Value String trafficModel) {
         param.setTrafficModel(trafficModel);
         return this;
     }
@@ -141,7 +148,7 @@ public class DirectionRequest {
      * @return This direction request object.
      * @since 1.2.1
      */
-    public DirectionRequest transitRoutingPreference(@Nullable String transitRoutingPreference) {
+    public DirectionRequest transitRoutingPreference(@Nullable @TransitRoutingPreference.Value String transitRoutingPreference) {
         param.setTransitRoutingPreference(transitRoutingPreference);
         return this;
     }

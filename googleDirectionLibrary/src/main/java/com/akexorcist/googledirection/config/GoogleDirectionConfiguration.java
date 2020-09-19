@@ -8,6 +8,7 @@ import okhttp3.OkHttpClient;
  * @since 1.0.0
  */
 
+@SuppressWarnings("unused")
 public class GoogleDirectionConfiguration {
     private static GoogleDirectionConfiguration configuration;
 

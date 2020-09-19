@@ -18,6 +18,11 @@ limitations under the License.
 
 package com.akexorcist.googledirection.constant;
 
+import androidx.annotation.StringDef;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
 /**
  * Unit.
  *
@@ -36,4 +41,12 @@ public class Unit {
      * @since 1.0.0
      */
     public static final String IMPERIAL = "imperial";
+
+    @Retention(RetentionPolicy.SOURCE)
+    @StringDef({
+            METRIC,
+            IMPERIAL
+    })
+    public @interface Value {
+    }
 }

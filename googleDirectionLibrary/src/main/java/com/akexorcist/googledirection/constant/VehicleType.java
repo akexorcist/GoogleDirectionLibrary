@@ -23,6 +23,7 @@ package com.akexorcist.googledirection.constant;
  *
  * @since 1.0.0
  */
+@SuppressWarnings("unused")
 public class VehicleType {
     /**
      * Rail.

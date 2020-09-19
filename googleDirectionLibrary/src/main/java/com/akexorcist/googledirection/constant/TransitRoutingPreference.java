@@ -18,6 +18,11 @@ limitations under the License.
 
 package com.akexorcist.googledirection.constant;
 
+import androidx.annotation.StringDef;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
 /**
  * Traffic Model.
  *
@@ -36,4 +41,12 @@ public class TransitRoutingPreference {
      * @since 1.2.1
      */
     public static final String FEWER_TRANSFERS = "fewer_transfers";
+
+    @Retention(RetentionPolicy.SOURCE)
+    @StringDef({
+            LESS_WALKING,
+            FEWER_TRANSFERS
+    })
+    public @interface Value {
+    }
 }

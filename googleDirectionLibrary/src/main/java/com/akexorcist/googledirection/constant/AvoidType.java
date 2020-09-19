@@ -18,6 +18,11 @@ limitations under the License.
 
 package com.akexorcist.googledirection.constant;
 
+import androidx.annotation.StringDef;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
 /**
  * Route restriction to avoid.
  *
@@ -49,4 +54,14 @@ public class AvoidType {
      * @since 1.0.0
      */
     public static final String INDOOR = "indoor";
+
+    @Retention(RetentionPolicy.SOURCE)
+    @StringDef({
+            TOLLS,
+            HIGHWAYS,
+            FERRIES,
+            INDOOR
+    })
+    public @interface Value {
+    }
 }
