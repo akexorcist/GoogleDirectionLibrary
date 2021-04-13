@@ -1,2 +1,2 @@
 include ':app'
-include ':googleDirectionLibrary'
+include ':google-direction'
