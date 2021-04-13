@@ -11,6 +11,7 @@ import com.akexorcist.googledirection.config.GoogleDirectionConfiguration
 import com.akexorcist.googledirection.constant.TransportMode
 import com.akexorcist.googledirection.model.Direction
 import com.akexorcist.googledirection.model.Route
+import com.akexorcist.googledirection.sample.databinding.ActivityTransitDirectionBinding
 import com.akexorcist.googledirection.util.DirectionConverter
 import com.akexorcist.googledirection.util.execute
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -20,9 +21,12 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_transit_direction.*
 
 class TransitDirectionActivity : AppCompatActivity() {
+    private val binding: ActivityTransitDirectionBinding by lazy {
+        ActivityTransitDirectionBinding.inflate(layoutInflater)
+    }
+
     companion object {
         private const val serverKey = "YOUR_SERVER_KEY"
         private val origin = LatLng(13.7371063, 100.5642539)
@@ -33,9 +37,9 @@ class TransitDirectionActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_transit_direction)
+        setContentView(binding.root)
 
-        buttonRequestDirection.setOnClickListener { requestDirection() }
+        binding.buttonRequestDirection.setOnClickListener { requestDirection() }
 
         (supportFragmentManager.findFragmentById(R.id.maps) as SupportMapFragment).getMapAsync { googleMap ->
             this.googleMap = googleMap
@@ -78,7 +82,7 @@ class TransitDirectionActivity : AppCompatActivity() {
                     googleMap?.addPolyline(polylineOption)
                 }
                 setCameraWithCoordinationBounds(route)
-                buttonRequestDirection.visibility = View.GONE
+                binding.buttonRequestDirection.visibility = View.GONE
             } else {
                 showSnackbar(direction.status)
             }

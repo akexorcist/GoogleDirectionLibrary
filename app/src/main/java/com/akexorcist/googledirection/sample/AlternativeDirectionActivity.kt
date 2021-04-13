@@ -9,6 +9,7 @@ import com.akexorcist.googledirection.config.GoogleDirectionConfiguration
 import com.akexorcist.googledirection.constant.TransportMode
 import com.akexorcist.googledirection.model.Direction
 import com.akexorcist.googledirection.model.Route
+import com.akexorcist.googledirection.sample.databinding.ActivityAlternativeDirectionBinding
 import com.akexorcist.googledirection.util.DirectionConverter
 import com.akexorcist.googledirection.util.execute
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -18,9 +19,12 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_alternative_direction.*
 
 class AlternativeDirectionActivity : AppCompatActivity() {
+    private val binding: ActivityAlternativeDirectionBinding by lazy {
+        ActivityAlternativeDirectionBinding.inflate(layoutInflater)
+    }
+
     companion object {
         private const val serverKey = "YOUR_SERVER_KEY"
         private val origin = LatLng(35.1766982, 136.9413508)
@@ -36,9 +40,9 @@ class AlternativeDirectionActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_alternative_direction)
+        setContentView(binding.root)
 
-        buttonRequestDirection.setOnClickListener { requestDirection() }
+        binding.buttonRequestDirection.setOnClickListener { requestDirection() }
 
         (supportFragmentManager.findFragmentById(R.id.maps) as SupportMapFragment).getMapAsync { googleMap ->
             this.googleMap = googleMap
@@ -69,10 +73,17 @@ class AlternativeDirectionActivity : AppCompatActivity() {
                     val route = direction.routeList[i]
                     val color = ContextCompat.getColor(this, pathColors[i % pathColors.size])
                     val directionPositionList = route.legList[0].directionPoint
-                    googleMap?.addPolyline(DirectionConverter.createPolyline(this, directionPositionList, 5, color))
+                    googleMap?.addPolyline(
+                        DirectionConverter.createPolyline(
+                            this,
+                            directionPositionList,
+                            5,
+                            color
+                        )
+                    )
                 }
                 setCameraWithCoordinationBounds(direction.routeList[0])
-                buttonRequestDirection.visibility = View.GONE
+                binding.buttonRequestDirection.visibility = View.GONE
             } else {
                 showSnackbar(direction.status)
             }

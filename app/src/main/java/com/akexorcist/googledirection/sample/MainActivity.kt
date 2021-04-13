@@ -3,19 +3,21 @@ package com.akexorcist.googledirection.sample
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
-
+import com.akexorcist.googledirection.sample.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private val binding: ActivityMainBinding by lazy {
+        ActivityMainBinding.inflate(layoutInflater)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
 
-        buttonSimple.setOnClickListener { goToSimpleDirection() }
-        buttonTransit.setOnClickListener { goToTransitDirection() }
-        buttonAlternative.setOnClickListener { goToAlternativeDirection() }
-        buttonWaypoints.setOnClickListener { goToWaypointsDirection() }
+        binding.buttonSimple.setOnClickListener { goToSimpleDirection() }
+        binding.buttonTransit.setOnClickListener { goToTransitDirection() }
+        binding.buttonAlternative.setOnClickListener { goToAlternativeDirection() }
+        binding.buttonWaypoints.setOnClickListener { goToWaypointsDirection() }
     }
 
     private fun goToSimpleDirection() {

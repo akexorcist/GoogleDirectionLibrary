@@ -9,6 +9,7 @@ import com.akexorcist.googledirection.config.GoogleDirectionConfiguration
 import com.akexorcist.googledirection.constant.TransportMode
 import com.akexorcist.googledirection.model.Direction
 import com.akexorcist.googledirection.model.Route
+import com.akexorcist.googledirection.sample.databinding.ActivitySimpleDirectionBinding
 import com.akexorcist.googledirection.util.DirectionConverter
 import com.akexorcist.googledirection.util.execute
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -18,9 +19,12 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_simple_direction.*
 
 class SimpleDirectionActivity : AppCompatActivity() {
+    private val binding: ActivitySimpleDirectionBinding by lazy {
+        ActivitySimpleDirectionBinding.inflate(layoutInflater)
+    }
+
     companion object {
         private const val serverKey = "YOUR_SERVER_KEY"
         private val origin = LatLng(37.7849569, -122.4068855)
@@ -31,9 +35,9 @@ class SimpleDirectionActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_simple_direction)
+        setContentView(binding.root)
 
-        buttonRequestDirection.setOnClickListener { requestDirection() }
+        binding.buttonRequestDirection.setOnClickListener { requestDirection() }
 
         (supportFragmentManager.findFragmentById(R.id.maps) as SupportMapFragment).getMapAsync { googleMap ->
             this.googleMap = googleMap
@@ -70,7 +74,7 @@ class SimpleDirectionActivity : AppCompatActivity() {
                     )
                 )
                 setCameraWithCoordinationBounds(route)
-                buttonRequestDirection.visibility = View.GONE
+                binding.buttonRequestDirection.visibility = View.GONE
             } else {
                 showSnackbar(direction.status)
             }

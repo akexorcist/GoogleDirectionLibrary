@@ -9,6 +9,7 @@ import com.akexorcist.googledirection.config.GoogleDirectionConfiguration
 import com.akexorcist.googledirection.constant.TransportMode
 import com.akexorcist.googledirection.model.Direction
 import com.akexorcist.googledirection.model.Route
+import com.akexorcist.googledirection.sample.databinding.ActivityWaypointsDirectionBinding
 import com.akexorcist.googledirection.util.DirectionConverter
 import com.akexorcist.googledirection.util.execute
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -18,9 +19,12 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_waypoints_direction.*
 
 class WaypointsDirectionActivity : AppCompatActivity() {
+    private val binding: ActivityWaypointsDirectionBinding by lazy {
+        ActivityWaypointsDirectionBinding.inflate(layoutInflater)
+    }
+
     companion object {
         private const val serverKey = "YOUR_SERVER_KEY"
         private val park = LatLng(41.8838111, -87.6657851)
@@ -35,7 +39,7 @@ class WaypointsDirectionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_waypoints_direction)
 
-        buttonRequestDirection.setOnClickListener { requestDirection() }
+        binding.buttonRequestDirection.setOnClickListener { requestDirection() }
 
         (supportFragmentManager.findFragmentById(R.id.maps) as SupportMapFragment).getMapAsync { googleMap ->
             this.googleMap = googleMap
@@ -83,7 +87,7 @@ class WaypointsDirectionActivity : AppCompatActivity() {
                     }
                 }
                 setCameraWithCoordinationBounds(route)
-                buttonRequestDirection.visibility = View.GONE
+                binding.buttonRequestDirection.visibility = View.GONE
             } else {
                 showSnackbar(direction.status)
             }
