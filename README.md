@@ -1,7 +1,7 @@
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Android--GoogleDirectionAndPlaceLibrary-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/1374)
-[![Download](https://api.bintray.com/packages/akexorcist/maven/google-direction-library/images/download.svg) ](https://bintray.com/akexorcist/maven/google-direction-library/_latestVersion)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.akexorcist/google-direction-library/badge.svg)](https://search.maven.org/artifact/com.akexorcist/google-direction-library)
 ![Minimum SDK Version](https://img.shields.io/badge/minSdkVersion-16-brightgreen) 
-[![Build Status](https://travis-ci.org/akexorcist/GoogleDirectionLibrary.svg?branch=master)](https://travis-ci.org/akexorcist/GoogleDirectionLibrary)
+[![Workflow Status](https://github.com/akexorcist/GoogleDirectionLibrary/actions/workflows/android.yml/badge.svg)](https://github.com/akexorcist/GoogleDirectionLibrary/actions)
 
 # Android-GoogleDirectionLibrary
 ![Google Direction Library](https://raw.githubusercontent.com/akexorcist/Android-GoogleDirectionLibrary/master/image/google-direction-library_header.jpg)
@@ -15,49 +15,21 @@ Google Maps Direction API helper for Android
 
 Download
 ===============================
-
-Maven
+Since version 2.1.2 will [move from JCenter to MavenCentral](https://developer.android.com/studio/build/jcenter-migration)
+```groovy
+// build.gradle (project)
+allprojects {
+    repositories {
+        mavenCentral()
+        /* ... */
+    }
+}
 ```
-<dependency>
-  <groupId>com.akexorcist</groupId>
-  <artifactId>google-direction-library</artifactId>
-  <version>1.2.1</version>
-</dependency>
-```
 
-Gradle
+**Gradle**
 ```
 implementation 'com.akexorcist:google-direction-library:1.2.1'
 ```
-
-
-What's new in 1.2.1
-===============================
-• Update target and compile SDK version 30 
-
-• Add @StringDef to all parameters
-
-• Add traffic model and transit routing preference parameters support
-
-• Fix incorrect Romanian language value
-
-What's new in 1.2.0
-===============================
-• Update minimum SDK version to 16
-
-• Update target and compile SDK version 29
-
-• Migrate to AndroidX
-
-• Migrate the sample code to Kotlin
-
-• Add total distance and duration calculation in route
-
-• Remove raw string from success callback
-
-• Add more customizable polyline in DirectionConverter
-
-• Fix issue #70
 
 
 Sample Code
@@ -144,13 +116,6 @@ Demo
 Try it at [Google Play](https://play.google.com/store/apps/details?id=com.akexorcist.googledirection.sample)
 
 
-Usage Documentation
-===============================
-English Version : http://www.akexorcist.com/2015/12/google-direction-library-for-android-en.html
-
-Thai Version : http://www.akexorcist.com/2015/12/google-direction-library-for-android-th.html
-
-
 ProGuard
 ===========================
 ```
@@ -169,15 +134,15 @@ ProGuard
 -keep class com.akexorcist.googledirection.model.** { *;}
 ```
 
-Special Thank
-===========================
-[@jonaslins](https://github.com/jonaslins)
 
-[@Will1229](https://github.com/Will1229)
+Change Log
+====
+See [CHANGELOG.md](CHANGELOG.md)
+
 
 Licence
 ===========================
-Copyright 2020 Akexorcist
+Copyright 2021 Akexorcist
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this work except in compliance with the License. You may obtain a copy of the License in the LICENSE file, or at:
 
